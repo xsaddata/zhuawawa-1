@@ -1,91 +1,71 @@
+@import '../../../assets/css/theme';
+
 .my {
   padding-bottom: 1px;
-  color: white;
+  color: #333;
   font-weight: 200;
 }
 
-.title {
-  height: 1.2rem;
-  background: url(../../home/img/app_name.png) no-repeat center bottom / auto .8rem;
-  .fl {
-    height: 1.2rem;
-    margin-left: .4rem;
-    width: .5rem;
-    background: url(../../../components/nav/back.png) no-repeat left bottom / auto .8rem;
+@margin: .4rem;
+.header {
+  height: 5.21333rem;
+  background: white url(./img/head_bg.png) no-repeat left -1rem;
+  background-size: 10rem auto;
+  position: relative;
+  .nav {
+    background: transparent;
   }
-}
-
-@margin: .5rem;
-.info {
-  height: 4.2rem;
-  margin: @margin;
-  padding: .3rem;
-  background: url(./img/info.png) no-repeat left top / 100% 100%;
-  .vip {
-    background: url(../../home/img/vip.png) no-repeat right top / .6rem;
-  }
-  .top {
-    height: 2.2rem;
+  .info {
+    position: absolute;
+    left: @margin;
+    right: @margin;
+    bottom: .2rem;
+    height: 3.25rem;
+    text-align: center;
+    box-shadow: 0 1px 6px #aaa;
+    border-radius: .26rem;
+    background: white;
     .avatar {
-      width: 2rem;
+      display: block;
+      width: 1.8rem;
+      margin: -.3rem auto 0;
       border-radius: 50%;
+      border: 2px solid white;
+      box-shadow: 0 0 .8rem @theme;
     }
-    .data {
-      padding: .5rem .2rem 0;
-      .user_name {
-        color: #333;
-        font-size: .42rem;
+    @h: 1.2rem;
+    .info_list {
+      height: @h;
+      line-height: @h /2;
+      margin-top: .3rem;
+      .li {
+        width: 100% / 3;
+        p {
+          height: @h / 2;
+        }
+      }
+      .c3 {
         font-weight: 400;
       }
-      .user_id {
-        color: #666;
+      .user_name {
+        font-size: .4rem;
       }
-    }
-  }
-  .bottom {
-    height: 1.2rem;
-    line-height: 1.2rem;
-    .fl {
-      width: 50%;
-      height: 100%;
-      background-repeat: no-repeat;
-
-      background-size: 1.2rem auto;
-    }
-    .money {
-      padding-right: .2rem;
-      background-position: left center;
-      background-image: url(./img/money.png);
-      .num {
-        background-image: url(./img/money_num.png);
-      }
-    }
-    .wawa {
-      background-position: .2rem center;
-      background-image: url(./img/wawa.png);
-      .num {
-        background-image: url(./img/wawa_num.png);
-      }
-    }
-    .num {
-      width: 2.5rem;
-      height: 100%;
-      padding: 0 1.2rem 0 .15rem;
-      background-position: left center;
-      background-repeat: no-repeat;
-      background-size: 100% auto;
     }
   }
 }
 
 .list {
-  margin: @margin;
+  padding: .2rem @margin 0;
   font-size: .4rem;
+  background: white;
   .item {
     height: 1.4rem;
     line-height: 1.4rem;
-    border-bottom: 1px solid white;
-    background: url(./img/arrow.png) no-repeat 8.5rem center / auto .5rem; //
+    border-bottom: 1px solid #eee;
+    background: url(../../../assets/img/arrow.png) no-repeat 8.9rem center / .2rem; //
+    &:last-child {
+      border: none;
+    }
   }
   .icon {
     width: .5rem;

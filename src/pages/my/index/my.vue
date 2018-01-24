@@ -1,61 +1,65 @@
 <template>
   <div class="my page">
-    <nav class="title">
-      <span class="back fl" @click="$router.go(-1)"></span>
-    </nav>
-
-    <div class="info">
-      <div class="top" :class="info.vip_level > 0 && 'vip'">
-        <div class="fl">
-          <img class="avatar"
-               :src="info.avatar">
-        </div>
-        <div class="fl data">
-          <p class="user_name">{{info.user_nicename}}</p>
-          <p class="user_id">{{`ID: ${info.id}`}}</p>
-        </div>
+    <header class="header">
+      <vNav class="nav">我的</vNav>
+      <div class="info">
+        <img :src="info.avatar" class="avatar">
+        <ul class="info_list clearFix">
+          <li class="li fl">
+            <p class="c3">{{info.not_token_num}}</p>
+            <p class="text">未取娃娃</p>
+          </li>
+          <li class="li fl">
+            <p class="c3 user_name">{{info.user_nicename}}</p>
+            <p class="text">{{'ID:' + info.id}}</p>
+          </li>
+          <li class="li fl">
+            <p class="c3">{{info.jifen || '无'}}</p>
+            <p class="text">积分</p>
+          </li>
+        </ul>
       </div>
-      <div class="bottom clearFix">
-        <div class="money fl" @click="go('recharge')">
-          <div class="num fr hideText">{{info.balance}}</div>
-        </div>
-        <div class="wawa fl">
-          <div class="num fr hideText">{{info.not_token_num}}</div>
-        </div>
-      </div>
-    </div>
+    </header>
 
     <ul class="list">
       <li class="item" @click="go('')">
-        <img src="./img/l1.png" alt="" class="icon">
+        <img src="./img/kefu.png" alt="" class="icon">
         客服小抓来帮您
       </li>
       <li class="item" @click="go('')">
-        <img src="./img/l2.png" alt="" class="icon">
+        <img src="./img/news.png" alt="" class="icon">
         消息通知
       </li>
       <li class="item" @click="go('')">
-        <img src="./img/l3.png" alt="" class="icon">
+        <img src="./img/address.png" alt="" class="icon">
         收货地址
       </li>
       <li class="item" @click="go('')">
-        <img src="./img/l4.png" alt="" class="icon">
-        抓取记录
+        <img src="./img/gold.png" alt="" class="icon">
+        金币记录
       </li>
       <li class="item" @click="go('')">
-        <img src="./img/l5.png" alt="" class="icon">
-        金币记录
+        <img src="./img/grab.png" alt="" class="icon">
+        抓取记录
       </li>
     </ul>
   </div>
 </template>
 
 <script>
+  import {vNav} from "../../../components";
   export default {
     name: '',
+    components: {vNav},
     data () {
       return {
-        info: {},
+        info: {
+          avatar: '',
+          not_token_num: '0',
+          jifen: "0",   //  等接口 改
+          id: "888888",
+          user_nicename: 'user_name'
+        },
         token: null,
       }
     },

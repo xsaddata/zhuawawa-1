@@ -25,7 +25,7 @@
         default(){
           return [
             {
-              url: "https://static.vux.li/demo/2.jpg",
+              url: "./static/img/banner.png",
               link: ""
             }
           ]
