@@ -1,0 +1,62 @@
+@import '../../assets/css/theme';
+
+@margin: .35rem;
+.set_list {
+  padding: 0 @margin;
+  font-size: .4rem;
+  .set_box {
+    margin-top: @margin;
+    padding: 0 .1rem;
+    background: #FDF2F3;
+    border-radius: .2rem;
+    & > .set_item {
+      height: 1.3rem;
+      line-height: 1.3rem;
+      padding: 0 @margin;
+      border-bottom: 1px solid #FAC5C7;
+
+      &:last-child {
+        border: none;
+      }
+    }
+    .arrow {
+      background: url(./set_item.png) no-repeat 8.5rem center / .25rem;
+    }
+    .switch {
+      width: 1.3rem;
+      height: .8rem;
+      margin: .25rem 0;
+      padding: .05rem;
+      border-radius: .4rem;
+      .switch_bar {
+        display: block;
+        width: .7rem;
+        height: .7rem;
+        border-radius: .35rem;
+        background: white;
+      }
+      > .on {
+        float: right;
+      }
+      > .off {
+        float: left;
+      }
+    }
+  }
+  .on {
+    background: @btn_color;
+  }
+  .off {
+    background: #d3d2d0
+  }
+  .out {
+    margin-top: .6rem;
+    height: 1.3rem;
+    line-height: 1.3rem;
+    font-size: .45rem;
+    text-align: center;
+    background: @btn_color url(../../assets/img/btn.png) no-repeat left top / 100% 100%;
+    border-radius: .2rem;
+    overflow: hidden;
+  }
+}

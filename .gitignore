@@ -1,0 +1,25 @@
+.DS_Store
+node_modules/
+<<<<<<< HEAD
+dist/
+npm-debug.log
+yarn-error.log
+=======
+/dist/
+>>>>>>> vuejs-templates-master
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+切图/
+快抓娃娃机V1.02打包/
+效果图/
+node_modules/

@@ -1,0 +1,130 @@
+@img_bg: #80F59D;
+@margin: .4rem;
+.home {
+  padding: 0 @margin @margin;
+}
+
+.header {
+  height: 1.2rem;
+  margin-bottom: @margin;
+  .fl {
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: auto .8rem;
+  }
+  .btn {
+    width: 20%;
+  }
+  .my {
+    background-image: url(./img/my.png);
+    background-position: left bottom;
+  }
+  .appName {
+    width: 60%;
+    background-image: url(./img/app_name.png);
+    background-position: center bottom;
+  }
+  .set {
+    background-image: url(./img/set.png);
+    background-position: right bottom;
+  }
+}
+
+.banner {
+  width: 100%;
+  border-radius: .3rem;
+  overflow: hidden;
+  .vux-slider {
+    height: (10 - 2 * @margin) * (255/690);
+  }
+}
+
+.notice {
+  height: .8rem;
+  line-height: .8rem;
+  margin-top: @margin;
+  padding: 0 1rem;
+  background: #FDF2F3 url(./img/notice.png) no-repeat .4rem center / .4rem;
+  border-radius: .4rem;
+  color: #F75A60;
+}
+
+.lists {
+  text-align: center;
+  @list_width: 5 - @margin - .1;
+  .list {
+    width: @list_width;
+    margin-top: @margin;
+    background: #f75f60;
+    border-radius: .2rem;
+    overflow: hidden;
+    &:after {
+      content: "";
+      display: block;
+      height: .1rem;
+      //background: linear-gradient(to bottom, #7DE968, #3CCE62);
+      background: #f84142;
+      border-bottom: 1px solid #600807;
+    }
+    &:nth-child(odd) {
+      margin-right: .2rem;
+    }
+  }
+  .list_img {
+    width: 100%;
+    height: @list_width * (360/340);
+    position: relative;
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .position {
+    position: absolute;
+    background-repeat: no-repeat;
+    background-position: left center;
+  }
+  .vip {
+    top: .1rem;
+    left: .2rem;
+    width: .6rem;
+    height: .6rem;
+    background-image: url(./img/vip.png);
+    background-size: .6rem;
+  }
+  .gold {
+    top: .2rem;
+    right: .2rem;
+    padding-left: .45rem;
+    color: white;
+    text-shadow: 0 0 1px #000;
+    font-size: .4rem;
+    background-image: url(./img/gold.png);
+    background-size: .4rem;
+  }
+  .list_start {
+    bottom: .2rem;
+    right: .2rem;
+    padding-left: .45rem;
+    background-size: .4rem;
+  }
+  .list_start_c1 {
+
+    color: #42C2F0;
+    background-image: url(./img/c3.png);
+  }
+  .list_start_c2 {
+    color: #F75F65;
+    background-image: url(./img/c3.png);
+  }
+  .list_start_c3 {
+    color: #FDF2F3;
+    background-image: url(./img/c3.png);
+  }
+  .list_name {
+    height: 1rem;
+    line-height: 1rem;
+    color: white;
+    font-size: .4rem;
+  }
+}

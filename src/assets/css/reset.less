@@ -1,0 +1,108 @@
+body, ul, ol, li, p, h1, h2, h3, h4, h5, h6, form, fieldset, table, td, img, div {
+  margin: 0;
+  padding: 0;
+  border: 0
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+  outline: 0
+}
+
+ol, ul, li {
+  list-style: none
+}
+
+img {
+  vertical-align: middle
+}
+
+a {
+  color: #333;
+  text-decoration: none
+}
+
+a:hover {
+  color: #333;
+  text-decoration: underline
+}
+
+i {
+  font-style: normal;
+}
+
+input, button, select {
+  font-weight: normal;
+  border: none;
+  background: none;
+  -webkit-appearance: none
+}
+
+select, input[type='number'], input[type='month'] {
+  appearance: none;
+  -moz-appearance: none; /*?Firefox?*/
+  -webkit-appearance: none; /*?Safari?和?Chrome?*/
+}
+
+input[type='button'], button, select, h1, h2, h3, h4, h5, h6 {
+  font-weight: normal;
+}
+
+.page{
+  min-height: 100vh;
+}
+
+body {
+  height: 100%;
+  font-family: Ubuntu Helvetica Ubuntu;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+#app {
+  margin: 0 auto;
+  max-width: 640px;
+  min-width: 320px;
+  font-size: .35rem;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.hide {
+  display: none
+}
+
+.hideText {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  max-width: 10rem;
+  margin: 0 auto;
+}
+
+.fog {
+  background-color: rgba(0, 0, 0, .4);
+}
+
+.fl {
+  float: left;
+}
+
+.fr {
+  float: right;
+}
+
+.clearFix {
+  clear: both;
+  overflow: hidden;
+}

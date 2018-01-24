@@ -1,0 +1,41 @@
+@import "../../../assets/css/theme";
+
+.banner {
+  margin-top: .24rem;
+  height: 2.453333rem;
+}
+
+.list {
+  padding: .5rem .6rem 1px;
+  text-align: center;
+  font-size: .38rem;
+  .item {
+    width: 4.12rem;
+    height: 2.62rem;
+    margin-bottom: .41rem;
+    box-shadow: 0 0 1px #ccc;
+    border-radius: .13rem;
+    background: white;
+    &:nth-child(odd) {
+      margin-right: 10rem - 2 * 4.12 - .6 * 2;
+    }
+  }
+  .diamond_num {
+    height: 1.53rem;
+    line-height: 1.53rem;
+    color: #666;
+    .diamond_img {
+      width: .58rem;
+      vertical-align: middle;
+      margin-top: -3px;
+    }
+  }
+  .money_num {
+    height: .933333rem;
+    line-height: .933333rem;
+    margin: 0 .06rem;
+    background-color: @pink_btn;
+    border-radius: .13rem;
+    color: white;
+  }
+}

@@ -1,0 +1,40 @@
+// The Vue build version to load with the `import` command
+// (runtime-only or standalone) has been set in webpack.base.conf with an alias.
+import Vue from 'vue'
+import FastClick from 'fastclick'
+import App from './App'
+import router from './router'
+import NProgress from 'nprogress'
+import 'nprogress/nprogress.css'
+import './assets/js/rem'
+import {AjaxPlugin, cookie, LoadingPlugin, AlertPlugin, ToastPlugin} from "vux"
+import global from './assets/js/global'
+
+
+//  页面加载进度条
+router.beforeEach((to, from, next) => {
+  NProgress.start();
+  next()
+});
+router.afterEach((to) => {
+  NProgress.done();
+});
+
+Vue.use(require('vue-wechat-title'))
+Vue.use(AjaxPlugin)
+Vue.use(LoadingPlugin)
+Vue.use(AlertPlugin)
+Vue.use(ToastPlugin)
+
+//  全局变量、方法
+global(Vue, cookie)
+
+FastClick.attach(document.body)
+
+Vue.config.productionTip = false
+
+/* eslint-disable no-new */
+new Vue({
+  router,
+  render: h => h(App)
+}).$mount('#app-box')
