@@ -1,0 +1,101 @@
+@import "../../../assets/css/theme";
+
+@h: 2.3rem;
+@padding: .5rem;
+@content_h: @h - 2 * @padding;
+
+.item {
+  height: @h;
+  margin-top: .24rem;
+  padding: @padding 0;
+  background-color: white;
+  background-repeat: no-repeat;
+  background-size: .6rem auto;
+  background-position: 8.8rem center;
+  &.zhua {
+    background-image: url(./zhua.png);
+  }
+  &.dui {
+    background-image: url(./dui.png);
+  }
+  .fl {
+    height: 100%;
+  }
+  .btn_box {
+    width: 1.3rem;
+    text-align: center;
+    @btn_h: .5rem;
+    .btn {
+      display: inline-block;
+      width: @btn_h;
+      height: @btn_h;
+      padding: .08rem;
+      margin-top: (@content_h - @btn_h) / 2;
+      border-radius: 50%;
+      border: 1px solid @theme;
+    }
+    .btn_c {
+      display: block;
+      width: 100%;
+      height: 100%;
+      background: @theme;
+      border-radius: 50%;
+    }
+  }
+  .content_box {
+    line-height: @content_h / 2;
+    max-width: 7rem;
+    .img {
+      height: @content_h;
+      width: @content_h;
+      border-radius: 50%;
+      margin-right: .4rem;
+      background: @page_bg;
+    }
+    .content {
+      display: inline-block;
+      height: @content_h;
+    }
+    .c_name {
+      color: #333;
+      font-size: .38rem;
+    }
+    .theme {
+      color: @theme;
+      font-size: .3rem;
+    }
+  }
+}
+
+.btns {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 10rem;
+  margin: 0 auto;
+  padding-top: .3rem;
+  background: @page_bg;
+  height: 3rem;
+  text-align: center;
+  .btn {
+    display: inline-block;
+    width: 2.08rem;
+    height: .7rem;
+    line-height: .7rem;
+    border-radius: .35rem;
+    color: white;
+  }
+  .dui {
+    margin-right: 1.12rem;
+    font-size: .34rem;
+  }
+  .gray {
+    background: @gray_btn;
+    box-shadow: 0 2px 0 0.013rem @gray_btn_shadow;
+  }
+  .theme{
+    background: @pink_btn;
+    box-shadow: 0 2px 0 1px @pink_btn_shadow;
+  }
+}

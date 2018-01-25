@@ -12,6 +12,8 @@ const url = {
     protocol: "portal/page/index/id/2?qudao=" + QUDAO + "&token=",    //  协议 [set]
     get_info: "Api/SiSi/getUserInfo",   //  个人信息 [my]
     recharge: 'Api/SiSi/get_recharge_package',   //  充值列表 [recharge]
+    wait_baby: 'Api/SiSi/getNotTakenWawaByUid',    //  奖品兑换列表 [exchange]
+    applyPostWawa: 'Api/SiSi/applyPostWawa',    //    兑换&提取  奖品
   }
 };
 

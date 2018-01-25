@@ -4,5 +4,6 @@
  */
 import vNav from './nav';
 import Swiper from './Swiper';
+import noData from './no_data';
 
-export{vNav, Swiper};
+export{vNav, Swiper, noData};

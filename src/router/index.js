@@ -33,6 +33,33 @@ export default new Router({
         require(['@/pages/my/index/my'], resolve)
       }
     }, {
+      path: '/exchange',
+      name: 'exchange',
+      meta: {
+        title: '奖品兑换'
+      },
+      component: function (resolve) {
+        require(['@/pages/my/exchange'], resolve)
+      }
+    }, {
+      path: '/service',
+      name: 'service',
+      meta: {
+        title: '客服中心'
+      },
+      component: function (resolve) {
+        require(['@/pages/my/service'], resolve)
+      }
+    }, {
+      path: '/news',
+      name: 'news',
+      meta: {
+        title: "消息通知"
+      },
+      component: function (resolve) {
+        require(['@/pages/my/news'], resolve)
+      }
+    }, {
       path: '/recharge',
       name: 'recharge',
       meta: {

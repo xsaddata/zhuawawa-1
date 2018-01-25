@@ -5,13 +5,16 @@
       <div class="info">
         <img :src="info.avatar" class="avatar">
         <ul class="info_list clearFix">
-          <li class="li fl">
+          <li class="li fl" @click="go('exchange')">
+            <span class="line fr"></span>
             <p class="c3">{{info.not_token_num}}</p>
             <p class="text">未取娃娃</p>
           </li>
           <li class="li fl">
+            <span class="line fr"></span>
             <p class="c3 user_name">{{info.user_nicename}}</p>
             <p class="text">{{'ID:' + info.id}}</p>
+
           </li>
           <li class="li fl">
             <p class="c3">{{info.jifen || '无'}}</p>
@@ -22,11 +25,11 @@
     </header>
 
     <ul class="list">
-      <li class="item" @click="go('')">
+      <li class="item" @click="go('service')">
         <img src="./img/kefu.png" alt="" class="icon">
         客服小抓来帮您
       </li>
-      <li class="item" @click="go('')">
+      <li class="item" @click="go('news')">
         <img src="./img/news.png" alt="" class="icon">
         消息通知
       </li>
@@ -79,7 +82,10 @@
         } else this.toast(d.descrp || "链接服务器失败");
       },
       go(page){
-        if (this.token) this.$router.push(page)
+        let p = '';
+        if (this.token) p = page;
+        else p = "login";
+        this.$router.push(p);
       }
     }
   }

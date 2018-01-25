@@ -22,16 +22,18 @@
     bottom: .2rem;
     height: 3.25rem;
     text-align: center;
-    box-shadow: 0 1px 6px #aaa;
+    box-shadow: 0 1px 6px 1px #eee;
     border-radius: .26rem;
     background: white;
     .avatar {
       display: block;
-      width: 1.8rem;
-      margin: -.3rem auto 0;
+      width: 1.9rem;
+      height: 1.9rem;
+      background: #eee;
+      margin: -.4rem auto 0;
       border-radius: 50%;
       border: 2px solid white;
-      box-shadow: 0 0 .8rem @theme;
+      box-shadow: 0 0 .6rem .1rem @theme;
     }
     @h: 1.2rem;
     .info_list {
@@ -43,6 +45,11 @@
         p {
           height: @h / 2;
         }
+      }
+      .line {
+        width: 1px;
+        height: @h;
+        background: #eee;
       }
       .c3 {
         font-weight: 400;
