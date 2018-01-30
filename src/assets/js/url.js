@@ -1,9 +1,8 @@
 const QUDAO = 'kuailai-one';
 const url = {
-  host: "http://doll.anwenqianbao.com/",
+  host: "http://test.doll.anwenqianbao.com/",
   api: {
-    get_banner: "Api/SiSi/getBanner",   //  轮播 [home]
-    get_live: "Api/SiSi/getLive",   //  娃娃机列表 [home]
+    get_banner: "Api/SiSi/getLiveBanner",   //  轮播 [home]
     help: "portal/appweb/help?qudao=" + QUDAO + "&token=",       //  帮助 [set]
     invite: "portal/appweb/my_code?qudao=" + QUDAO + "&token=",  //  邀请 [set]
     invite_code: "portal/appweb/input_code?qudao=" + QUDAO + "&token=",    //  邀请码 [set]

@@ -25,7 +25,10 @@
       </div>
       <div class="set_box">
         <div class="set_item arrow" @click="open('feedback')">问题反馈</div>
-        <!--<div class="set_item">检查更新</div>-->
+        <div class="set_item">
+          当前版本
+          <span class="fr edition">V2.0.0</span>
+        </div>
         <div class="set_item arrow" @click="open('about')">关于我们</div>
       </div>
 

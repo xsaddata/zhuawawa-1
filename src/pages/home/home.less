@@ -1,130 +1,109 @@
-@img_bg: #80F59D;
-@margin: .4rem;
+@import "../../assets/css/theme";
+
 .home {
-  padding: 0 @margin @margin;
+  padding-top: 1.2rem;
 }
 
-.header {
+.v_header {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
   height: 1.2rem;
-  margin-bottom: @margin;
-  .fl {
-    height: 100%;
-    background-repeat: no-repeat;
-    background-size: auto .8rem;
-  }
+  line-height: 1.2rem;
+  color: white;
+  background-image: @nav_bg;
+  text-align: center;
+  font-size: .55rem;
+  z-index: 100;
   .btn {
-    width: 20%;
+    height: 100%;
+    width: 1.33rem;
+    background-position: .4rem center;
+    background-repeat: no-repeat;
+    background-size: .53rem;
   }
   .my {
     background-image: url(./img/my.png);
-    background-position: left bottom;
-  }
-  .appName {
-    width: 60%;
-    background-image: url(./img/app_name.png);
-    background-position: center bottom;
   }
   .set {
     background-image: url(./img/set.png);
-    background-position: right bottom;
   }
 }
 
 .banner {
-  width: 100%;
-  border-radius: .3rem;
-  overflow: hidden;
-  .vux-slider {
-    height: (10 - 2 * @margin) * (255/690);
-  }
+  height: 3.9rem;
 }
 
-.notice {
-  height: .8rem;
-  line-height: .8rem;
-  margin-top: @margin;
-  padding: 0 1rem;
-  background: #FDF2F3 url(./img/notice.png) no-repeat .4rem center / .4rem;
-  border-radius: .4rem;
-  color: #F75A60;
-}
-
-.lists {
+@margin: .4rem;
+.btns {
   text-align: center;
-  @list_width: 5 - @margin - .1;
-  .list {
-    width: @list_width;
-    margin-top: @margin;
-    background: #f75f60;
-    border-radius: .2rem;
-    overflow: hidden;
-    &:after {
-      content: "";
-      display: block;
-      height: .1rem;
-      //background: linear-gradient(to bottom, #7DE968, #3CCE62);
-      background: #f84142;
-      border-bottom: 1px solid #600807;
-    }
-    &:nth-child(odd) {
-      margin-right: .2rem;
-    }
-  }
-  .list_img {
-    width: 100%;
-    height: @list_width * (360/340);
-    position: relative;
-    img {
-      width: 100%;
-      height: 100%;
-    }
-  }
-  .position {
-    position: absolute;
+  padding: .2rem @margin;
+  .btn {
+    height: 1.6rem;
+    padding-top: 1.1rem;
+    width: 25%;
+    background-position: center 0;
     background-repeat: no-repeat;
-    background-position: left center;
+    background-size: 1.1rem 1.1rem;
   }
-  .vip {
-    top: .1rem;
-    left: .2rem;
-    width: .6rem;
-    height: .6rem;
-    background-image: url(./img/vip.png);
-    background-size: .6rem;
+  .btn1 {
+    background-image: url(./img/btn1.png);
   }
-  .gold {
-    top: .2rem;
-    right: .2rem;
-    padding-left: .45rem;
-    color: white;
-    text-shadow: 0 0 1px #000;
-    font-size: .4rem;
-    background-image: url(./img/gold.png);
-    background-size: .4rem;
+  .btn2 {
+    background-image: url(./img/btn2.png);
   }
-  .list_start {
-    bottom: .2rem;
-    right: .2rem;
-    padding-left: .45rem;
-    background-size: .4rem;
+  .btn3 {
+    background-image: url(./img/btn3.png);
   }
-  .list_start_c1 {
+  .btn4 {
+    background-image: url(./img/btn4.png);
+  }
+}
 
-    color: #42C2F0;
-    background-image: url(./img/c3.png);
-  }
-  .list_start_c2 {
-    color: #F75F65;
-    background-image: url(./img/c3.png);
-  }
-  .list_start_c3 {
-    color: #FDF2F3;
-    background-image: url(./img/c3.png);
-  }
-  .list_name {
-    height: 1rem;
-    line-height: 1rem;
-    color: white;
-    font-size: .4rem;
+.device_lists {
+  padding: 0 @margin @margin;
+  .device {
+    @w: 4.42rem;
+    @h: 5.36rem;
+    @bg_h: 4.026rem;
+    @padding: .3rem;
+    @content_h: @h - @bg_h - @padding;
+    width: @w;
+    height: @h;
+    line-height: @content_h / 2;
+    padding: @bg_h + @padding / 2 @padding 0;
+    border-radius: .26rem;
+    background-color: #fff;
+    background-repeat: no-repeat;
+    background-size: 100% @bg_h;
+    &:nth-child(odd) {
+      margin-right: .36rem;
+      margin-bottom: @margin;
+    }
+    .price {
+      @bg_w: .3rem;
+      padding-left: @bg_w + .2;
+      background: url(../../assets/img/diamond.png) no-repeat left center / @bg_w @bg_w;
+      color: #666666;
+      font-size: .3rem;
+    }
+    .state {
+      @state_h: .48rem;
+      display: inline-block;
+      width: 1.18rem;
+      height: @state_h;
+      margin-top: (@content_h - @state_h) / 2;
+      border-radius: @state_h / 2;
+      text-align: center;
+      font-size: .3rem;
+      color: white;
+    }
+    .state2 {
+      background-color: #45C0F0;
+    }
+    .state3 {
+      background-color: #FA97C1;
+    }
   }
 }

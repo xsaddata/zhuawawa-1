@@ -1,90 +1,93 @@
 <template>
   <div class="home page">
-    <ul class="header">
-      <li class="btn fl my" @click="$router.push('my')"></li>
-      <li class="appName fl"></li>
-      <li class="btn fl set" @click="$router.push('set')"></li>
-    </ul>
+    <!--<ul class="header">-->
+    <!--<li class="btn fl my" @click="$router.push('my')"></li>-->
+    <!--<li class="appName fl"></li>-->
+    <!--<li class="btn fl set" @click="$router.push('set')"></li>-->
+    <!--</ul>-->
+    <nav class="v_header clearFix">
+      快抓娃娃机
+      <span class="fl my btn" @click="$router.push('my')"></span>
+      <span class="fr set btn" @click="$router.push('set')"></span>
+    </nav>
 
     <!--banner-->
     <div class="banner">
       <swiper :list="banner"
               auto
-              height="100%"
+              height="3.9rem"
               dots-class="custom-bottom"
               :loop="true"
-              dots-position="center" :show-desc-mask="false">
+              dots-position="center" :show-desc-mask="false"
+              v-if="banner !== null">
       </swiper>
     </div>
 
-    <!--公告-->
-    <div class="notice">
-      <div class="notice_content">
-        疯狂输出
-      </div>
-    </div>
+    <!--导航-->
+    <ul class="btns clearFix">
+      <li class="btn1 btn fl">全部</li>
+      <li class="btn2 btn fl">邀请</li>
+      <li class="btn3 btn fl">积分商城</li>
+      <li class="btn4 btn fl">充值</li>
+    </ul>
 
     <!--列表-->
-    <ul class="lists clearFix">
-      <li class="list fl" v-for="i in live" :key="i.deviceid">
-        <div class="list_img">
-          <img :src="i.thumb">
-          <div class="gold position">{{i.price}}</div>
-          <div class="list_start position" :class="'list_start_c'+ i.channel_status">
-            {{
-            i.channel_status === "3" ? "等待中": i.channel_status === "2" ? "游戏中" : "空闲中"
-            }}
-          </div>
-          <div class="vip position"></div>
-        </div>
-        <p class="hideText list_name">{{i.channel_title}}</p>
+    <ul class="device_lists clearFix" v-if="device !== null">
+      <li class="device fl"
+          v-for="(item,index) in device"
+          :style="`background-image: url(${item.thumb})`"
+          :key="item.deviceid">
+        {{item.channel_title}}
+        <span class="state fr"
+              v-if="item.channel_status === '2' || item.channel_status == '3'"
+              :class="`state${item.channel_status}`">
+          {{{"2": "空闲中", "3": "游戏中"}[item.channel_status]}}
+        </span>
+        <br>
+        <span class="price">{{`${item.price}币/次`}}</span>
+
       </li>
     </ul>
   </div>
 </template>
 
 <script>
+  import vNav from "../../components/nav";
   import {Swiper} from 'vux';
   export default {
     name: 'home',
     components: {
-      Swiper
+      Swiper,
+      vNav
     },
     data () {
       return {
-        banner: [],
-        live: [],
-        loading_state: 2,
+        banner: null,
+        device: null,
       }
     },
     created(){
       this.loading.show();
-      this.ajax('get_banner', {qudao: ""}, this.init_banner);
-      this.ajax('get_live', {limit_begin: "0", limit_num: "20"}, this.init_live);
+      this.ajax('get_banner', {}, this.init_banner);
     },
     methods: {
       init_banner(d){
         if (d.code === 200) {
-          for (let i = 0; i < d.data.length; i++) {
-            this.banner.push({
-              url: "javascript:",
-              img: d.data[i].pic,
-              fallbackImg: "http://doll.anwenqianbao.com/data/upload/20171214/5a3240464f1f4.png"
-            });
-          }
+          let banner = [];
+          banner = d.banner.pic.map((item) => {
+            return {
+              url: "javascript;",
+              img: item.img,
+              id: item.id,
+              fallbackImg: "./static/img/banner.png"
+            }
+          });
+          this.banner = banner;
+          this.device = d.info.device;
         }
-        this.hide_loading();
+        this.loading.hide()
       },
-      init_live(d){
-        if (d.code === 200) {
-          this.live = d.info;
-        }
-        this.hide_loading();
-      },
-      hide_loading(){
-        this.loading_state--;
-        if (this.loading_state === 0) this.loading.hide();
-      }
+
     }
   }
 </script>

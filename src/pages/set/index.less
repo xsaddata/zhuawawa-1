@@ -1,62 +1,71 @@
 @import '../../assets/css/theme';
 
-@margin: .35rem;
-.set_list {
-  padding: 0 @margin;
-  font-size: .4rem;
-  .set_box {
-    margin-top: @margin;
-    padding: 0 .1rem;
-    background: #FDF2F3;
-    border-radius: .2rem;
-    & > .set_item {
-      height: 1.3rem;
-      line-height: 1.3rem;
-      padding: 0 @margin;
-      border-bottom: 1px solid #FAC5C7;
+.set {
+  padding-bottom: .5rem;
+}
 
-      &:last-child {
-        border: none;
-      }
+@setBox_marginTop: .24rem;
+@setBox_paddingLeft: .4rem;
+@setItem_h: 1.386rem;
+@setItem_fontSize: .36rem;
+.set_box {
+  margin-top: @setBox_marginTop;
+  padding: 0 @setBox_paddingLeft;
+  background-color: #fff;
+  .set_item {
+    height: @setItem_h;
+    line-height: @setItem_h;
+    font-size: @setItem_fontSize;
+    border-bottom: 1px solid #eee;
+    &:last-child {
+      border: none;
     }
-    .arrow {
-      background: url(./set_item.png) no-repeat 8.5rem center / .25rem;
+  }
+  .arrow {
+    background: url(../../assets/img/arrow.png) no-repeat right center / .2rem auto;
+  }
+  .switch {
+    @switch_w: 1.37rem;
+    @switch_h: .85rem;
+    @switch_padding: .05rem;
+    @switchBar_w: @switch_h - 2 * @switch_padding;
+    width: @switch_w;
+    height: @switch_h;
+    margin-top: (@setItem_h - @switch_h) / 2;
+    padding: @switch_padding;
+    border-radius: @switch_w / 2;
+    &.on {
+      background-color: @theme;
     }
-    .switch {
-      width: 1.3rem;
-      height: .8rem;
-      margin: .25rem 0;
-      padding: .05rem;
-      border-radius: .4rem;
-      .switch_bar {
-        display: block;
-        width: .7rem;
-        height: .7rem;
-        border-radius: .35rem;
-        background: white;
-      }
-      > .on {
+    &.off {
+      background-color: @gray_btn;
+    }
+    .switch_bar {
+      width: @switchBar_w;
+      height: @switchBar_w;
+      border-radius: 50%;
+      background-color: #fff;
+      &.on {
         float: right;
       }
-      > .off {
+      &.off {
         float: left;
       }
     }
   }
-  .on {
-    background: @btn_color;
+  .edition {
+    color: #666;
   }
-  .off {
-    background: #d3d2d0
-  }
-  .out {
-    margin-top: .6rem;
-    height: 1.3rem;
-    line-height: 1.3rem;
-    font-size: .45rem;
-    text-align: center;
-    background: @btn_color url(../../assets/img/btn.png) no-repeat left top / 100% 100%;
-    border-radius: .2rem;
-    overflow: hidden;
-  }
+}
+
+.out {
+  @out_h: 1.173rem;
+  height: @out_h;
+  width: 8.93rem;
+  line-height: @out_h;
+  margin: 1.32rem auto 0;
+  color: #999;
+  border: 1px solid #ddd;
+  border-radius: @out_h / 2;
+  text-align: center;
 }
