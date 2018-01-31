@@ -15,6 +15,15 @@ export default new Router({
         require(['@/pages/notFound'], resolve)
       }
     }, {
+      path: '/login',
+      name: 'login',
+      meta: {
+        title: '登录'
+      },
+      component: function (resolve) {
+        require(['@/pages/login'], resolve)
+      }
+    }, {
       path: '/home',
       name: 'home',
       meta: {
