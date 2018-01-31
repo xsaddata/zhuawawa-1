@@ -1,0 +1,40 @@
+.news {
+  padding: 1.2rem 0;
+}
+
+.list {
+  .item {
+    .tiem {
+      @h: 1.64rem;
+      @content_h: .7rem;
+      height: @content_h;
+      line-height: @content_h;
+      width: 3.54rem;
+      margin: (@h - @content_h) / 2 auto;
+      background: #d7d4d4;
+      color: white;
+      font-size: .32rem;
+      text-align: center;
+      border-radius: .08rem;
+      overflow: hidden;
+    }
+    .content {
+      padding: 0 .66rem;
+      background-color: #fff;
+      .title {
+        @h: 1.37rem;
+        height: @h;
+        line-height: @h;
+        font-size: .4rem;
+      }
+      .banner {
+        width: 100%;
+      }
+      .text {
+        padding: .48rem 0;
+        line-height: .55rem;
+        color: #999;
+      }
+    }
+  }
+}

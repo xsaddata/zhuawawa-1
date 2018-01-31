@@ -1,6 +1,6 @@
 <template>
   <div class="exchange page">
-    <vNav class="nav">奖品兑换</vNav>
+    <vNav class="vNav">奖品兑换</vNav>
     <div class="data" v-if="list.length !== 0">
       <ul class="list">
         <li class="item"

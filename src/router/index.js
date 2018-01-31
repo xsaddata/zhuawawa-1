@@ -60,8 +60,8 @@ export default new Router({
         require(['@/pages/my/service'], resolve)
       }
     }, {
-      path: '/news',
-      name: 'news',
+      path: '/note',
+      name: 'note',
       meta: {
         title: "消息通知"
       },

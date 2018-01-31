@@ -15,7 +15,8 @@ const url = {
     get_info: "Api/SiSi/getUserInfo",   //  个人信息 [my]
     recharge: 'Api/SiSi/get_recharge_package',   //  充值列表 [recharge]
     wait_baby: 'Api/SiSi/getNotTakenWawaByUid',    //  奖品兑换列表 [exchange]
-    applyPostWawa: 'Api/SiSi/applyPostWawa',    //    兑换&提取  奖品
+    applyPostWawa: 'Api/SiSi/applyPostWawa',    //    兑换&提取  [exchange]
+    get_note: 'Api/SiSi/pushNotice',    //    消息通知  [news]
   }
 };
 

@@ -16,7 +16,7 @@
             <p class="text">{{'ID:' + info.id}}</p>
 
           </li>
-          <li class="li fl">
+          <li class="li fl"  @click="go('商城')">
             <p class="c3">{{info.jifen || '无'}}</p>
             <p class="text">积分</p>
           </li>
@@ -25,11 +25,11 @@
     </header>
 
     <ul class="list">
-      <li class="item" @click="go('service')">
-        <img src="./img/kefu.png" alt="" class="icon">
-        客服小抓来帮您
-      </li>
-      <li class="item" @click="go('news')">
+      <!--<li class="item" @click="go('service')">-->
+      <!--<img src="./img/kefu.png" alt="" class="icon">-->
+      <!--客服小抓来帮您-->
+      <!--</li>-->
+      <li class="item" @click="go('note')">
         <img src="./img/news.png" alt="" class="icon">
         消息通知
       </li>
@@ -44,6 +44,10 @@
       <li class="item" @click="go('')">
         <img src="./img/grab.png" alt="" class="icon">
         抓取记录
+      </li>
+      <li class="item" @click="go('')">
+        <img src="./img/grab.png" alt="" class="icon">
+        积分记录
       </li>
     </ul>
   </div>
