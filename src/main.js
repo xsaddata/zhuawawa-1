@@ -14,7 +14,11 @@ import global from './assets/js/global'
 //  页面加载进度条
 router.beforeEach((to, from, next) => {
   NProgress.start();
-  next()
+  let token = cookie.get('token');
+  let noToken = to.name === "login" || to.name === "404";
+  let home_code = to.query.code;
+  if (noToken || home_code || token) next();
+  else next("/login");
 });
 router.afterEach((to) => {
   NProgress.done();

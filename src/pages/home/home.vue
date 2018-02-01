@@ -68,11 +68,21 @@
     },
     created(){
       this.loading.show();
-      this.ajax('get_banner', {}, this.init_banner);
+      let token = this.cookie.get('token');
+      let code = this.$route.query.code;
+      if (token) this.get_banner(token);
+      else if (code) {
+        this.ajax('login', `code=${code}`, this.login);
+      } else this.loading.hide();
+
     },
     methods: {
+      get_banner(token){
+        this.ajax('get_banner', `token=${token}&limit_begin=0&limit_num=20`, this.init_banner);
+      },
       init_banner(d){
-        if (d.code === 200) {
+        if (d.code !== 200) this.toast(d.descrp);
+        else {
           let banner = [];
           banner = d.banner.pic.map((item) => {
             return {
@@ -87,7 +97,19 @@
         }
         this.loading.hide()
       },
-
+      login(d){
+        this.loading.hide();
+        if (d.code !== 200) {
+            this.toast(d.descrp);
+            this.$router.push('login')
+        }
+        else {
+          let token = d.data.api_token;
+          this.cookie.set("token", token);
+          this.cookie.set("id", d.data.id);
+          this.get_banner(token)
+        }
+      }
     }
   }
 </script>

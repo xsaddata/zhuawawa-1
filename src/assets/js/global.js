@@ -40,7 +40,7 @@ let global = function (Vue, cookie) {
       fund(response.data)
     }).catch(function (err) {
       console.log(err);
-      fund({})
+      fund({descrp: "连接失败"})
     });
   };
   Vue.prototype.out = function () {

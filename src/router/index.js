@@ -4,6 +4,9 @@ import Router from 'vue-router'
 Vue.use(Router)
 
 export default new Router({
+  beforeEach(to, from, next) {
+
+  },
   routes: [
     {
       path: '*',
@@ -67,6 +70,15 @@ export default new Router({
       },
       component: function (resolve) {
         require(['@/pages/my/news'], resolve)
+      }
+    }, {
+      path: '/integral',
+      name: 'integral',
+      meta: {
+        title: "积分记录"
+      },
+      component: function (resolve) {
+        require(['@/pages/my/integral'], resolve)
       }
     }, {
       path: '/recharge',

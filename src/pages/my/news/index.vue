@@ -32,7 +32,7 @@
     },
     methods: {
       get_note(d){
-        if (d.code !== "200") this.toast(d.descrp || "链接服务器失败");
+        if (d.code !== 200) this.toast(d.descrp || "链接服务器失败");
         else {
           this.list = d.info;
         }

@@ -45,7 +45,7 @@
         <img src="./img/grab.png" alt="" class="icon">
         抓取记录
       </li>
-      <li class="item" @click="go('')">
+      <li class="item" @click="go('integral')">
         <img src="./img/grab.png" alt="" class="icon">
         积分记录
       </li>
