@@ -21,6 +21,8 @@ const url = {
     applyPostWawa: 'Api/SiSi/applyPostWawa',    //    兑换&提取  [exchange]
     get_note: 'Api/SiSi/pushNotice',    //    消息通知  [news]
     integral: "Api/SiSi/intergationLog",     //    积分记录
+    gold_notes: "Api/SiSi/getMoneylog",   //  金币记录
+    grad: "getPlayLogByUid",   //  金币记录
   }
 };
 

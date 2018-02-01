@@ -18,10 +18,14 @@
     },
     created(){
       let token = this.cookie.get("token");
-      if (token) this.ajax('integral', `token=${token}`, this.get_integral)
+      if (token) {
+        this.loading.show();
+        this.ajax('integral', `token=${token}`, this.get_integral)
+      }
     },
     methods: {
       get_integral(d){
+        this.loading.hide();
         if (d.code !== "200") this.toast(d.descrp);
         else if (d.info.length > 0) {
           this.integral = d.info;

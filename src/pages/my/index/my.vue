@@ -33,20 +33,20 @@
         <img src="./img/news.png" alt="" class="icon">
         消息通知
       </li>
-      <li class="item" @click="go('')">
+      <li class="item" @click="go('address')">
         <img src="./img/address.png" alt="" class="icon">
         收货地址
       </li>
-      <li class="item" @click="go('')">
+      <li class="item" @click="go('gold_notes')">
         <img src="./img/gold.png" alt="" class="icon">
         金币记录
       </li>
-      <li class="item" @click="go('')">
+      <li class="item" @click="go('grad')">
         <img src="./img/grab.png" alt="" class="icon">
         抓取记录
       </li>
       <li class="item" @click="go('integral')">
-        <img src="./img/grab.png" alt="" class="icon">
+        <img src="./img/integral.png" alt="" class="icon">
         积分记录
       </li>
     </ul>

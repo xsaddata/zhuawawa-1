@@ -1,0 +1,53 @@
+@import "../../../assets/css/theme";
+
+@padding_left: .14rem;
+.game {
+  padding: 0 @padding_left;
+  background: @nav_bg;
+  text-align: center;
+  color: white;
+  position: relative;
+  .diamond {
+    @h: .6rem;
+    @margin_top: ( 1.2rem - @h ) /2;
+    position: absolute;
+    right: .4rem;
+    top: @margin_top;
+    width: 2.3rem;
+    height: .6rem;
+    line-height: @h;
+    background: url(../../../assets/img/add_balance.png) no-repeat left top / 100% 100%;
+  }
+}
+
+.position {
+  position: fixed;
+  top: 1.2rem;
+  left: @padding_left;
+  right: @padding_left;
+  bottom: 0;
+  width: 10rem - 2 * @padding_left;
+  margin: 0 auto;
+}
+
+.controller {
+  .room {
+    @h: .7rem;
+    height: @h;
+    line-height: @h;
+    padding: 0 @h / 2 0 @h;
+    margin: .28rem;
+    background: rgba(91, 103, 114, .7) url(./people.png) no-repeat @h / 4 center;
+    background-size: .5rem auto;
+    border-radius: @h /2;
+  }
+  .switch_video {
+    @h: 1.46rem;
+    margin-top: calc(~"50vh - .6rem -  @{h}" );
+    height: @h;
+    width: @h;
+    border-top-left-radius: @h /2;
+    border-bottom-left-radius: @h /2;
+    background: @theme url(./switch.png) no-repeat center center / 50% auto;
+  }
+}

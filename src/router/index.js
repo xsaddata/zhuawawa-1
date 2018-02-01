@@ -3,10 +3,8 @@ import Router from 'vue-router'
 
 Vue.use(Router)
 
+let title = "快抓娃娃机";
 export default new Router({
-  beforeEach(to, from, next) {
-
-  },
   routes: [
     {
       path: '*',
@@ -30,10 +28,19 @@ export default new Router({
       path: '/home',
       name: 'home',
       meta: {
-        title: '首页'
+        title: title
       },
       component: function (resolve) {
-        require(['@/pages/home/home'], resolve)
+        require(['@/pages/home/index/home'], resolve)
+      }
+    }, {
+      path: '/game',
+      name: 'game',
+      meta: {
+        title: title
+      },
+      component: function (resolve) {
+        require(['@/pages/home/game'], resolve)
       }
     }, {
       path: '/my',
@@ -61,6 +68,42 @@ export default new Router({
       },
       component: function (resolve) {
         require(['@/pages/my/service'], resolve)
+      }
+    }, {
+      path: '/address',
+      name: 'address',
+      meta: {
+        title: '收货地址'
+      },
+      component: function (resolve) {
+        require(['@/pages/my/address'], resolve)
+      }
+    }, {
+      path: '/add_address',
+      name: 'add_address',
+      meta: {
+        title: '新增收货地址'
+      },
+      component: function (resolve) {
+        require(['@/pages/my/add_address'], resolve)
+      }
+    }, {
+      path: '/gold_notes',
+      name: 'gold_notes',
+      meta: {
+        title: '金币记录'
+      },
+      component: function (resolve) {
+        require(['@/pages/my/gold_notes'], resolve)
+      }
+    }, {
+      path: '/grad',
+      name: 'grad',
+      meta: {
+        title: '抓取记录'
+      },
+      component: function (resolve) {
+        require(['@/pages/my/grad'], resolve)
       }
     }, {
       path: '/note',

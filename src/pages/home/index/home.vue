@@ -52,7 +52,7 @@
 </template>
 
 <script>
-  import vNav from "../../components/nav";
+  import vNav from "../../../components/nav";
   import {Swiper} from 'vux';
   export default {
     name: 'home',
@@ -107,6 +107,7 @@
           let token = d.data.api_token;
           this.cookie.set("token", token);
           this.cookie.set("id", d.data.id);
+          this.cookie.set("balance", d.data.balance);
           this.get_banner(token)
         }
       }
