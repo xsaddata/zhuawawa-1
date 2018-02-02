@@ -1,7 +1,13 @@
 <template>
   <div class="integral page">
-    <vNav>金币记录</vNav>
-    <div class="list" v-if="integral !== null"></div>
+    <vNav></vNav>
+    <div class="list" v-if="integral !== null">
+      <div class="item" v-for="(item,index) in integral" :key="index">
+        <p class="mem">{{item.mem}}</p>
+        <p class="create_time">{{item.create_time}}</p>
+        <span class="update_integration">{{item.update_integration}}</span>
+      </div>
+    </div>
     <noData v-else></noData>
   </div>
 </template>
@@ -26,7 +32,7 @@
     methods: {
       get_integral(d){
         this.loading.hide();
-        if (d.code !== "200") this.toast(d.descrp);
+        if (d.code !== 200) this.toast(d.descrp);
         else if (d.info.length > 0) {
           this.integral = d.info;
         }
@@ -37,5 +43,5 @@
 
 
 <style scoped lang="less" rel="stylesheet/less">
-
+  @import "./index.less";
 </style>

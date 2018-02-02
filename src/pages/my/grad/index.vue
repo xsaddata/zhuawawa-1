@@ -2,7 +2,12 @@
   <div class=" grad page">
     <vNav></vNav>
     <ul class="list" v-if="list !== null">
-      <li class="item" v-for="(item,index) in list" :key="index"></li>
+      <li class="item" v-for="(item,index) in list" :key="index" >
+        <img :src="item.img" class="img">
+        <p class="name">{{item.name}}</p>
+        <p class="play_time theme">{{item.play_time}}</p>
+        <span class="play_result theme">{{item.play_result}}</span>
+      </li>
     </ul>
     <noData v-else></noData>
   </div>
@@ -34,5 +39,5 @@
 
 
 <style scoped lang="less" rel="stylesheet/less">
-
+  @import "./index.less";
 </style>

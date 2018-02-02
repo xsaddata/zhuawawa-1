@@ -22,7 +22,10 @@ const url = {
     get_note: 'Api/SiSi/pushNotice',    //    消息通知  [news]
     integral: "Api/SiSi/intergationLog",     //    积分记录
     gold_notes: "Api/SiSi/getMoneylog",   //  金币记录
-    grad: "getPlayLogByUid",   //  金币记录
+    grad: "Api/SiSi/getPlayLogByUid",   // 抓取记录
+    add_address: "Api/SiSi/addAddress",   // 添加或修改地址 []
+    address: "Api/SiSi/getAddress",   // 获取地址
+    del_address: "Api/SiSi/delAddress",   // 获取地址
   }
 };
 

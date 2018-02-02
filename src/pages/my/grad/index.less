@@ -1,0 +1,38 @@
+@import "../../../assets/css/theme";
+
+.item {
+  @h: 2.3rem;
+  @padding: .35rem;
+  height: @h;
+  line-height: (@h - 2 * @padding) / 2;
+  margin-top: .23rem;
+  padding: @padding @padding @padding @h;
+  background-color: #fff;
+  position: relative;
+  .img {
+    position: absolute;
+    top: (@h - @img_h) / 2;
+    left: @padding;
+    @img_h: 1.14rem;
+    width: @img_h;
+    height: @img_h;
+    border-radius: 50%;
+  }
+  .name {
+    font-size: .38rem;
+  }
+  .play_time {
+    font-size: .3rem;
+  }
+  .play_result {
+    position: absolute;
+    top: 0;
+    right: @padding;
+    bottom: 0;
+    line-height: @h;
+    font-size: .34rem;
+  }
+  .theme {
+    color: @theme;
+  }
+}

@@ -1,11 +1,10 @@
 <template>
-  <div class="c_nav">
+
     <nav class="v_header">
       <span class="back" @click="back"></span>
       <!--<slot></slot>-->
       {{$route.meta.title}}
     </nav>
-  </div>
 
 </template>
 

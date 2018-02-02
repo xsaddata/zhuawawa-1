@@ -1,6 +1,4 @@
-.c_nva{
-  position: absolute;
-}
+@import "../../../assets/css/theme";
 
 .add {
   position: absolute;
@@ -10,4 +8,64 @@
   top: (1.2rem - @h) /2;
   right: (1.2rem - @h) /2;
   background: url(./add.png) no-repeat center center / 100% 100%;
+}
+
+.list {
+  @h: 1.52rem;
+  @padding_top: .26rem;
+  @padding_left: .4rem;
+  @lh: (@h - 2 * @padding_top) / 2;
+  .item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    line-height: @lh;
+    padding: @padding_top @padding_left;
+    margin-top: @padding_top;
+    @state_w: 1.2rem;
+    &.gray {
+      background: #eeeeee;
+    }
+    .state {
+      width: @state_w;
+      @option_h: .5rem;
+      .option {
+        width: @option_h;
+        height: @option_h;
+        border-radius: 50%;
+        border: 1px solid @theme;
+        padding: .1rem;
+      }
+      .select {
+        @select_h: 100%;
+        width: @select_h;
+        height: @select_h;
+        border-radius: 50%;
+        background: @theme;
+
+      }
+    }
+    .content {
+      width: 10rem - @state_w - 2 * @padding_left;
+      position: relative;
+      .address {
+        font-size: .38rem;
+      }
+      .name {
+        font-size: .3rem;
+        color: #666;
+      }
+      .revise {
+        @re_h: .37rem;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: @re_h;
+        height: @re_h;
+        background: url(./revise.png) no-repeat right bottom / 100% 100%;
+      }
+    }
+  }
+
 }

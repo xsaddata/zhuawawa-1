@@ -34,7 +34,7 @@
       video: {
         inserted: function (el) {
           let canvas = el;
-          let url = 'ws://pili-live-rtmp.sou001.com:1250/kuailai/123.wsts'; //视频帧数据
+          let url = 'ws://pili-live-rtmp.v.anwenqianbao.com:1250/xinhe/001.wsts'; //视频帧数据
           let player = new Kinlink.Player(url, {canvas: canvas});
         }
       }

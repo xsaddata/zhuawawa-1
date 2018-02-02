@@ -1,0 +1,29 @@
+@import "../../../assets/css/theme";
+
+.item {
+  @h: 2.3rem;
+  @padding_top: .4rem;
+  @padding_left: .6rem;
+  height: @h;
+  line-height: (@h - 2 * @padding_top) / 2;
+  padding: @padding_top @padding_left;
+  margin-top: .24rem;
+  background: #fff;
+  position: relative;
+  .memo{
+    font-size: .36rem;
+  }
+  .log_time {
+    color: @theme;
+    font-size: .3rem;
+  }
+  .money {
+    position: absolute;
+    right: @padding_left;
+    top: 0;
+    height: @h;
+    line-height: @h;
+    color: @theme;
+    font-size: .3rem;
+  }
+}

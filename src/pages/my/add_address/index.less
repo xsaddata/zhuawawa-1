@@ -1,3 +1,94 @@
-label.label {
-  display: block;
+@import "../../../assets/css/theme";
+
+.add_address {
+  padding-bottom: .5rem;
 }
+
+.from {
+  @margin_top: .24rem;
+  margin-top: @margin_top;
+  @h: 1.36rem;
+  label {
+    display: block;
+  }
+  .label {
+
+    height: @h;
+    line-height: @h;
+    padding: 0 .38rem;
+    background: #fff;
+    font-size: .36rem;
+    .k {
+      display: inline-block;
+      width: 2rem;
+    }
+    .v {
+      font-size: inherit;
+    }
+    .choice {
+      height: @h;
+      width: 6.8rem;
+      padding-right: .4rem;
+      text-align: right;
+      background: url(../../../assets/img/arrow.png) no-repeat right center / .2rem;
+      color: #333;
+    }
+  }
+  .border {
+    border-bottom: 1px solid #eee;
+  }
+  .switch {
+    @sw_h: .85rem;
+    @sw_padding: .06rem;
+    @i_h: @sw_h - 2 * @sw_padding;
+    width: 1.37rem;
+    height: @sw_h;
+    margin-top: (@h - @sw_h ) / 2;
+    padding: @sw_padding;
+    border-radius: @sw_h / 2;
+    .bar {
+      height: @i_h;
+      width: @i_h;
+      border-radius: 50%;
+      background: white;
+      &.on {
+        float: left;
+      }
+      &.off {
+        float: right;
+      }
+    }
+  }
+  .on {
+    background-color: @theme;
+  }
+  .off {
+    background-color: #eee;
+  }
+  .default {
+    margin-top: @margin_top;
+  }
+  .submit {
+    @s_h: 1.2rem;
+    height: @s_h;
+    line-height: @s_h;
+    width: 9rem;
+    margin: 1.25rem auto 0;
+    text-align: center;
+    color: white;
+    font-size: .42rem;
+    background: @nav_bg;
+    border-radius: @s_h / 2;
+  }
+}
+
+.city_list {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 8rem;
+  overflow-y: hidden;
+  background: #ffffff;
+}
+
