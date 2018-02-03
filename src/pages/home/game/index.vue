@@ -1,7 +1,7 @@
 <template>
   <div class="game page">
     <vNav></vNav>
-    <span class="diamond">{{balance}}</span>
+    <span class="diamond" @click="$router.push('recharge')">{{balance}}</span>
     <div class="video position">
       <canvas v-video style="width:100%;height:100%;"></canvas>
     </div>
@@ -10,55 +10,29 @@
       <!--切换按钮-->
       <span class="switch_video fr" @click="sendCaozuo(12)"></span>
 
-      <div class="layui-row" id="guanzhong" style="text-align:center">
-        <div id="caozuo_connect" @click="sendCaozuo(13)" class="layui-btn layui-btn-normal layui-btn-sm">
-          开始游戏
-        </div>
-      </div>
-      <div class="layui-row" id="player">
-        <table style="margin:50px auto;width: 280px">
-          <tr>
-            <td></td>
-            <td>
-              <div @touchstart="sendCaozuo(2)" @touchend="sendCaozuo(16)"
-                   class="layui-btn layui-btn-normal layui-btn-sm">上
-              </div>
-            </td>
-            <td></td>
-            <td></td>
-            <td>
-              <div class="layui-btn layui-btn-normal layui-btn-sm">切换</div>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <div @touchstart="sendCaozuo(4)" @touchend="sendCaozuo(16)"
-                   class="layui-btn layui-btn-normal layui-btn-sm">左
-              </div>
-            </td>
-            <td></td>
-            <td>
-              <div @touchstart="sendCaozuo(5)" @touchend="sendCaozuo(16)"
-                   class="layui-btn layui-btn-normal layui-btn-sm">右
-              </div>
-            </td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td></td>
-            <td>
-              <div @touchstart="sendCaozuo(3)" @touchend="sendCaozuo(16)"
-                   class="layui-btn layui-btn-normal layui-btn-sm">下
-              </div>
-            </td>
-            <td></td>
-            <td></td>
-            <td>
-              <div id="caozuo_go" @click="sendCaozuo(11)" class="layui-btn layui-btn-normal layui-btn-sm">下爪</div>
-            </td>
-          </tr>
-        </table>
+
+      <!--<ul class="ganme_connect">-->
+      <!--<li class="li fl w25">-->
+      <!--<span class=" btn record"></span>-->
+      <!--</li>-->
+      <!--<li class="li fl w50" @click="sendCaozuo(13)">-->
+      <!--<span class=" btn play">-->
+      <!--开始游戏 <br>-->
+      <!--<i class="price">x{{price}}</i>-->
+      <!--</span>-->
+      <!--</li>-->
+      <!--<li class="li fl w25">-->
+      <!--<span class=" btn chat"></span>-->
+      <!--</li>-->
+      <!--</ul>-->
+
+
+      <div class="ingame">
+        <span class="top direction btn" @touchstart="sendCaozuo(2)" @touchend="sendCaozuo(16)"></span>
+        <span class="bottom direction btn" @touchstart="sendCaozuo(3)" @touchend="sendCaozuo(16)"></span>
+        <span class="left direction btn" @touchstart="sendCaozuo(4)" @touchend="sendCaozuo(16)"></span>
+        <span class="right direction btn" @touchstart="sendCaozuo(5)" @touchend="sendCaozuo(16)"></span>
+        <span class="btn claw" @click="sendCaozuo(11)"></span>
       </div>
 
     </div>
@@ -78,7 +52,7 @@
     data () {
       return {
         balance: null,
-
+        price: 200,
 
       }
     },

@@ -2,13 +2,13 @@
   <div class="recharge page">
     <Vnav>充值</Vnav>
     <div class="banner">
-      <Swiper></Swiper>
+      <img :src="banner" class="banner_img" v-if="banner">
     </div>
 
     <ul class="list clearFix" v-if="list !== null">
       <li class="item fl" v-for="(item,index) in list">
         <p class="diamond_num">
-          <img class="diamond_img" :src="banner" alt="">
+          <img class="diamond_img" src="../../../assets/img/diamond.png" alt="">
           {{item.diamond_num + '金币'}}
         </p>
         <p class="money_num">{{"¥ " + item.money_num }}</p>
@@ -19,19 +19,20 @@
 
 <script>
   import Vnav from "@/components/nav";
-  import {Swiper} from '@/components'
+//  import {Swiper} from '@/components'
   export default {
     name: 'recharge',
-    components: {Vnav, Swiper},
+    components: {Vnav},
     data () {
       return {
         list: null,
         token: null,
+        banner: null,
       }
     },
     created(){
       this.ajax('recharge', '', this.init_list);
-      this.token = this.cookie("token");
+      this.token = this.cookie.get("token");
 
     },
     methods: {
@@ -39,7 +40,7 @@
         if (d.code !== 200) this.toast(d.descrp);
         else {
           this.list = d.prices;
-          this.banner = d.banner.pic;
+          this.banner = d.banner.pic.img;
         }
       }
     }

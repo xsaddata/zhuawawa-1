@@ -43,11 +43,114 @@
   }
   .switch_video {
     @h: 1.46rem;
-    margin-top: calc(~"50vh - .6rem -  @{h}" );
+    margin-top: calc(~"50vh - .6rem -  @{h}");
     height: @h;
     width: @h;
     border-top-left-radius: @h /2;
     border-bottom-left-radius: @h /2;
     background: @theme url(./switch.png) no-repeat center center / 50% auto;
+  }
+  .ganme_connect {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2.5rem;
+    .li {
+      height: 100%;
+    }
+    @h: 1.6rem;
+    @w25_h: 1.14rem;
+    @margin_top: (@h - @w25_h) / 2;
+    .btn {
+      display: inline-block;
+      vertical-align: top;
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+      background-color: white;
+    }
+    .w25 {
+      width: 25%;
+      .btn {
+        width: @w25_h;
+        height: @w25_h;
+        margin-top: @margin_top;
+        border-radius: 50rem;
+      }
+      .record {
+        background-image: url(./record.png);
+      }
+      .chat {
+        background-image: url(./chat.png);
+      }
+    }
+    .w50 {
+      width: 50%;
+      .btn {
+        width: 90%;
+        height: @h;
+        line-height: (@h - .5rem) / 2;
+        padding: .2rem;
+        font-size: .4rem;
+        border-radius: @h / 2;
+        background-image: url(./paly.png);
+      }
+      .price {
+        padding-left: .5rem;
+        background: url(../../../assets/img/diamond.png) no-repeat left center / .4rem;
+      }
+    }
+  }
+  .ingame {
+    @h: 3.26rem;
+    position: absolute;
+    bottom: .54rem;
+    left: 1rem;
+    right: 1rem;
+    height: @h;
+    background: url(./ingame_bg.png) no-repeat left top / 100% 100%;
+    .btn {
+      position: absolute;
+    }
+    @direction_h: 1.2rem;
+    @left: 1.73rem;
+    @top: (@h - @direction_h) / 2;
+    .direction {
+      width: @direction_h;
+      height: @direction_h;
+      border-radius: 50%;
+      background-color: #fff;
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+    }
+    .top {
+      top: 0;
+      left: @left - @direction_h / 2;
+      background-image: url(./top.png);
+    }
+    .bottom {
+      top: 3.26rem - @direction_h;
+      left: @left - @direction_h / 2;
+      background-image: url(./bottom.png);
+    }
+    .left {
+      top: @top;
+      left: 0;
+      background-image: url(./left.png);
+    }
+    .right {
+      top: @top;
+      left: @h - @direction_h;
+      background-image: url(./right.png);
+    }
+    .claw {
+      @claw_h: @h * .82 - .2;
+      right: .15rem;
+      bottom: .15rem;
+      width: @claw_h;
+      height: @claw_h;
+      border-radius: 50%;
+      background: #fff url(./claw.png) no-repeat center center / 100% 100%;
+    }
   }
 }
