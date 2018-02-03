@@ -26,9 +26,9 @@
     <!--导航-->
     <ul class="btns clearFix">
       <li class="btn1 btn fl">全部</li>
-      <li class="btn2 btn fl">邀请</li>
-      <li class="btn3 btn fl">积分商城</li>
-      <li class="btn4 btn fl">充值</li>
+      <li class="btn2 btn fl" @click="invite">邀请</li>
+      <li class="btn3 btn fl" @click="_open()">积分商城</li>
+      <li class="btn4 btn fl" @click="_open('recharge')">充值</li>
     </ul>
 
     <!--列表-->
@@ -36,7 +36,9 @@
       <li class="device fl"
           v-for="(item,index) in device"
           :style="`background-image: url(${item.thumb})`"
-          :key="item.deviceid">
+          :key="item.deviceid"
+      @click="$router.push('game?id=' + item.deviceid)">
+
         {{item.channel_title}}
         <span class="state fr"
               v-if="item.channel_status === '2' || item.channel_status == '3'"
@@ -100,8 +102,8 @@
       login(d){
         this.loading.hide();
         if (d.code !== 200) {
-            this.toast(d.descrp);
-            this.$router.push('login')
+          this.toast(d.descrp);
+          this.$router.push('login')
         }
         else {
           let token = d.data.api_token;
@@ -110,6 +112,12 @@
           this.cookie.set("balance", d.data.balance);
           this.get_banner(token)
         }
+      },
+      invite(){
+        window.location.href = this.url.host + this.url.api.invite + this.cookie.get('token');
+      },
+      _open(page){
+        this.$router.push(page);
       }
     }
   }

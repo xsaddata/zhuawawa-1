@@ -8,7 +8,7 @@
     <ul class="list clearFix" v-if="list !== null">
       <li class="item fl" v-for="(item,index) in list">
         <p class="diamond_num">
-          <img class="diamond_img" src="../../../assets/img/diamond.png" alt="">
+          <img class="diamond_img" :src="banner" alt="">
           {{item.diamond_num + '金币'}}
         </p>
         <p class="money_num">{{"¥ " + item.money_num }}</p>
@@ -30,17 +30,16 @@
       }
     },
     created(){
-      let token = this.cookie.get('token');
-      if (token) {
-        this.ajax('recharge', '', this.init_list);
-        this.token = token;
-      }
+      this.ajax('recharge', '', this.init_list);
+      this.token = this.cookie("token");
+
     },
     methods: {
       init_list(d){
-        if (d.code !== 200) this.toast(d.descrp)
+        if (d.code !== 200) this.toast(d.descrp);
         else {
-          this.list = d.info;
+          this.list = d.prices;
+          this.banner = d.banner.pic;
         }
       }
     }

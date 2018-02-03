@@ -5,7 +5,7 @@
       <ul class="list">
         <li class="item"
             v-for="(item,index) in list"
-            :class="item.change && item.change === 0? 'zhua': 'dui'"
+            :class="item.change === 0 ? 'zhua': 'dui'"
             @click="tab_checked(index)"
             :key="item.doll_id">
           <p class="fl btn_box">
@@ -25,8 +25,8 @@
       </ul>
 
       <div class="btns">
-        <span @click="submit(0)" class="btn dui" :class="dui_btn.length > 0? 'theme':'gray'">兑换</span>
-        <span @click="submit(1)" class="btn ti" :class="ti_btn.length > 0 ? 'theme':'gray'">提取</span>
+        <span @click="submit(0)" class="btn dui" :class="dui_btn? 'theme':'gray'">兑换</span>
+        <span @click="submit(1)" class="btn ti" :class="ti_btn? 'theme':'gray'">提取</span>
       </div>
     </div>
     <noData v-else></noData>
@@ -43,19 +43,15 @@
         limit_begin: 0,
         limit_num: 20,
         list: [],
-        checked: [],
-        ti_btn: [],    //  按钮是否能点
-        dui_btn: [],   //  按钮是否能点
         token: '',
-        del: [],     //  提取&兑换 成功后删除
+        checked: {},
+        dui_btn: false,
+        ti_btn: false,
       }
     },
     created(){
-      let token = this.cookie.get('token');
-      if (token) {
-        this.token = token;
-        this.load_more();
-      }
+      this.token = this.cookie.get('token');
+      this.load_more();
     },
     methods: {
       load_more(){
@@ -64,43 +60,37 @@
       },
       add_record(d){
         this.loading.hide();
-        if (d.code !== 200) this.toast(d.descrp || '链接服务器失败！');
+        if (d.code !== 200) this.toast(d.descrp);
         else if (d.info.length > 0) {
           this.list = this.list.concat(d.info);
-          this.checked = this.list.map(() => {
-            return false;
-          });
         }
       },
       tab_checked(i){
-        this.$set(this.checked, i, !this.checked[i]);
-        let ti_btn = [];
-        let dui_btn = [];
-        let del = [];
-        for (let index = 0; index < this.checked.length; index++) {
-          if (this.checked[index]) {
-            ti_btn.push(this.checked[index].id);
-            del.push(index);
-            if (this.checked[index].change === 0) dui_btn.push(this.checked[index].id);
+        let val = true;
+        let dui_btn_state = true;
+        let ti_btn_state = false;
+        this.checked[i] && (val = false);
+        this.$set(this.checked, i, val);
+        !val && (delete this.checked[i]);
+        for (let k in this.checked) {
+          ti_btn_state = true;
+          if (this.list[k].change === 0) {
+            dui_btn_state = false;
+            break;
           }
         }
-        this.del = del;
-        this.ti_btn = ti_btn;
-        this.dui_btn = dui_btn;
+        this.ti_btn !== ti_btn_state && (this.ti_btn = ti_btn_state)
+        this.dui_btn !== dui_btn_state && (this.dui_btn = dui_btn_state);
       },
       submit(type){
-        let doll_id = [];
-        if (type === 0) {
-          if (this.dui_btn.length === 0)return false;
-          else doll_id = this.dui_btn;
-        } else {
-          if (this.ti_btn.length === 0)return false
-          else doll_id = this.ti_btn;
+        if ((type === 0 && this.dui_btn) || (type === 1 && this.ti_btn)) {
+          let info = [];
+          for (let k in this.checked) {
+            info.push(this.list[k])
+          }
+          this.loading.show('提交中');
+          this.ajax('applyPostWawa', `token=${this.token}&info=${info}&type=${type}`, this.end);
         }
-
-        this.loading.show('提交中');
-        this.ajax('applyPostWawa', `token=${this.toekn}&doll_id=${doll_id.join(',')}&type=${type}`, this.end);
-
       },
       end(d){
         this.loading.hide();
