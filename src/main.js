@@ -17,7 +17,15 @@ router.beforeEach((to, from, next) => {
   let token = cookie.get('token');
   let noToken = to.name === "login" || to.name === "404";
   let home_code = to.query.code;
-  if (noToken || home_code || token) next();
+  // if(to.name === "404" && )
+  function getUrlData(name) {
+    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+    var r = window.location.search.substr(1).match(reg);
+    if (r !== null)return unescape(r[2]);
+    return null;
+  }
+  if(to.name === "404" && getUrlData('code')) next('/home?code=' + getUrlData('code'));
+  else if (noToken || home_code || token) next();
   else next("/login");
 });
 router.afterEach((to) => {

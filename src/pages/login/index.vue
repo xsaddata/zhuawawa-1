@@ -30,6 +30,7 @@
         window.location.href = this.url.host + this.url.api.protocol + this.cookie.get("token")
       },
       login(){
+          debugger
         window.location.href = this.url.api.getCode;
       }
     }
