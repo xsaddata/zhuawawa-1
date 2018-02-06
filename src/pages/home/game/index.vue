@@ -11,23 +11,23 @@
       <span class="switch_video fr" @click="sendCaozuo(12)"></span>
 
 
-      <!--<ul class="ganme_connect">-->
-      <!--<li class="li fl w25">-->
-      <!--<span class=" btn record"></span>-->
-      <!--</li>-->
-      <!--<li class="li fl w50" @click="sendCaozuo(13)">-->
-      <!--<span class=" btn play">-->
-      <!--开始游戏 <br>-->
-      <!--<i class="price">x{{price}}</i>-->
-      <!--</span>-->
-      <!--</li>-->
-      <!--<li class="li fl w25">-->
-      <!--<span class=" btn chat"></span>-->
-      <!--</li>-->
-      <!--</ul>-->
+      <ul class="ganme_connect" v-show="!in_game">
+        <li class="li fl w25">
+          <span class=" btn record"></span>
+        </li>
+        <li class="li fl w50" @click="sendCaozuo(13)">
+      <span class=" btn play">
+      开始游戏 <br>
+      <i class="price">x{{price}}</i>
+      </span>
+        </li>
+        <li class="li fl w25">
+          <span class=" btn chat"></span>
+        </li>
+      </ul>
 
 
-      <div class="ingame">
+      <div class="ingame" v-show="in_game">
         <span class="top direction btn" @touchstart="sendCaozuo(2)" @touchend="sendCaozuo(16)"></span>
         <span class="bottom direction btn" @touchstart="sendCaozuo(3)" @touchend="sendCaozuo(16)"></span>
         <span class="left direction btn" @touchstart="sendCaozuo(4)" @touchend="sendCaozuo(16)"></span>
@@ -53,7 +53,7 @@
       return {
         balance: null,
         price: 200,
-
+        in_game: false,
       }
     },
     created(){

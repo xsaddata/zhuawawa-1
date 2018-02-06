@@ -142,10 +142,13 @@ export default new Router({
         require(['@/pages/set'], resolve)
       }
     }, {
-      path: '/nav',
-      name: 'header',
+      path: '/mall',
+      name: 'mall',
+      meta: {
+        title: '积分商城'
+      },
       component(resolve){
-        require(['@/components/nav'], resolve)
+        require(['@/pages/mall/index'], resolve)
       }
     }
   ],

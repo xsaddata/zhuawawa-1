@@ -27,7 +27,7 @@
     <ul class="btns clearFix">
       <li class="btn1 btn fl">全部</li>
       <li class="btn2 btn fl" @click="invite">邀请</li>
-      <li class="btn3 btn fl" @click="_open()">积分商城</li>
+      <li class="btn3 btn fl" @click="_open('mall')">积分商城</li>
       <li class="btn4 btn fl" @click="_open('recharge')">充值</li>
     </ul>
 

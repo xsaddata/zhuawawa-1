@@ -27,7 +27,12 @@ const url = {
     add_address: "Api/SiSi/addAddress",   // 添加或修改地址 []
     address: "Api/SiSi/getAddress",   // 获取地址
     del_address: "Api/SiSi/delAddress",   // 获取地址
+// 积分商城
+    convertList: "Api/SiSi/convertList",    //  积分商城 列表
+    exchange: "Api/SiSi/convertApply",   //  积分兑换商品
+    ex_record: 'Api/SiSi/convertLog',   //   兑换记录
   }
+
 };
 
 export default url;

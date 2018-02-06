@@ -16,7 +16,7 @@
             <p class="text">{{'ID:' + info.id}}</p>
 
           </li>
-          <li class="li fl"  @click="go('商城')">
+          <li class="li fl" @click="go('mall')">
             <p class="c3">{{info.jifen || '无'}}</p>
             <p class="text">积分</p>
           </li>

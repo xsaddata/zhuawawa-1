@@ -1,0 +1,142 @@
+@import '../../../assets/css/theme';
+
+.tab {
+  padding-bottom: 2px;
+  margin-bottom: .2rem;
+  text-align: center;
+  font-size: .45rem;
+  color: #666;
+  background: white;
+  position: relative;
+  .tab_list {
+    height: 1.2rem;
+    line-height: calc(~"1.2rem + 2px");
+  }
+  .tab_itme {
+    width: 50%;
+    color: inherit;
+    transition: color .25s;
+  }
+  .tab_bar {
+    height: 2px;
+    width: 50%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transition: left .25s;
+  }
+  .tab_bar_inner {
+    display: block;
+    width: 2rem;
+    height: 100%;
+    margin: 0 auto;
+    border-radius: 1px;
+    background: @theme;
+  }
+  .bar_transition {
+    left: 50%;
+  }
+  .selected {
+    color: @theme;
+  }
+}
+
+.banner {
+  height: 2.41rem;
+  .banner_img {
+    width: 50%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-position: left top;
+    background-size: 100% 100%;
+    background-color: @theme
+  }
+}
+
+.list {
+  @padding-left: .4rem;
+  @padding-top: .3rem;
+  padding: @padding-top @padding-left;
+  .item {
+    @h: 5.4rem;
+    @w: (10rem - 3 * @padding-left) / 2;
+    @item_padding_top: 4rem;
+    @item_padding_bottom: .2rem;
+    width: @w;
+    height: @h;
+    padding: @item_padding_top 0 0;
+    margin-bottom: .25rem;
+    background-repeat: no-repeat;
+    background-position: left top;
+    background-size: 100% @item_padding_top;
+    border-radius: .26rem;
+    box-shadow: 0 1px 1px 1px #eee;
+    &:nth-child(odd) {
+      margin-right: @padding-left;
+    }
+    .text {
+      @text_h: @h - 2 * @item_padding_bottom - @item_padding_top;
+      padding: @item_padding_bottom;
+      line-height: @text_h / 2;
+      .fr {
+        width: 1.13rem;
+        @fr_h: .5rem;
+        height: @fr_h;
+        line-height: @fr_h;
+        margin-top: (@text_h - @fr_h) / 2;
+        border-radius: @fr_h / 2;
+        background: @theme;
+        color: white;
+        font-size: .3rem;
+        text-align: center;
+      }
+    }
+    .name {
+      font-size: .35rem;
+    }
+    .conver {
+      color: @theme;
+      font-size: .3rem;
+    }
+  }
+}
+
+.record {
+  .item {
+    @h: 2.3rem;
+    @p_t: .5rem;
+    @p_l: .3rem;
+    @bg_w: 1.15rem;
+    @bg_m: .81rem;
+    @content_h: @h - 2 * @p_t;
+    height: @h;
+    line-height: @content_h / 2;
+    padding: @p_t @p_l @p_t @bg_w + @bg_m + @p_l;
+    background-repeat: no-repeat;
+    background-position: @p_l center;
+    background-size: @bg_w @bg_w;
+    border-bottom: 1px solid #eee;
+    &:last-child{
+      border: none;
+    }
+    .fr {
+      height: 100%;
+      line-height: @content_h;
+      width: 2rem;
+      text-align: center;
+      color: @theme;
+      font-size: .38rem;
+    }
+    .name{
+      font-size: .38rem;
+    }
+    .time{
+      color: @theme;
+      font-size: .3rem;
+    }
+  }
+}
+
+div.noData {
+  top: 2.6rem;
+}

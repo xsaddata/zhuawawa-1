@@ -79,7 +79,7 @@
             break;
           }
         }
-        this.ti_btn !== ti_btn_state && (this.ti_btn = ti_btn_state)
+        this.ti_btn !== ti_btn_state && (this.ti_btn = ti_btn_state);
         this.dui_btn !== dui_btn_state && (this.dui_btn = dui_btn_state);
       },
       submit(type){
@@ -89,7 +89,25 @@
             info.push(this.list[k])
           }
           this.loading.show('提交中');
-          this.ajax('applyPostWawa', `token=${this.token}&info=${info}&type=${type}`, this.end);
+//          this.ajax('applyPostWawa', `token=${this.token}&info=${info}&type=${type}`, this.end);
+
+          const _this = this;
+          this.http({
+            method: "POST",
+            url: this.url.host + this.url.api['applyPostWawa'],
+            data: {
+              token: this.token,
+              info: info,
+              type: type
+            },
+          }).then(function (response) {
+            _this.end(response.data)
+          }).catch(function (err) {
+            console.log(err);
+            _this.end({descrp: "连接失败"})
+          });
+
+
         }
       },
       end(d){
