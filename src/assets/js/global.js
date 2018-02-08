@@ -45,6 +45,10 @@ let global = function (Vue, cookie) {
   };
   Vue.prototype.out = function () {
     this.cookie.remove("token");
+    this.cookie.remove("balance");
+    this.cookie.remove("username");
+    this.cookie.remove("id");
+    this.$router.push('login')
   }
 };
 

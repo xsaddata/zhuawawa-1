@@ -83,6 +83,8 @@
         this.loading.hide();
         if (d.code === 200) {
           this.info = d.data;
+          this.cookie.set('balance', d.data.balance);
+          this.cookie.set('username', d.data.user_nicename);
         } else this.toast(d.descrp || "链接服务器失败");
       },
       go(page){

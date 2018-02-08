@@ -8,7 +8,9 @@ const url = {
 // 首页
     login: "Api/SiSi/wxlogin",    //  微信登录
     get_banner: "Api/SiSi/getLiveBanner",   //  轮播
+// 房间
     enterDeviceRoom: "Api/SiSi/enterDeviceRoom",    //  进入房间
+    connect: "Api/SiSi/connDeviceControl",    //  申请连接设备
 // 设置
     help: "portal/appweb/help?qudao=" + QUDAO + "&token=",       //  帮助
     invite: "portal/appweb/my_code?qudao=" + QUDAO + "&token=",  //  邀请

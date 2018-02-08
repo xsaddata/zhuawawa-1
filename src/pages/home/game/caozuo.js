@@ -60,43 +60,15 @@ socket.on('privateReceive', function (data) {
   console.log(data);
   switch (data.messageType) {
     case GAME_CONNECTTED:
-     console.log('链接成功')
+      play();
       break;
   }
 
 });
 
-// $("#caozuo_up").on("touchstart", function () {
-//   sendCaozuo(GAME_UP);
-// });
-// $("#caozuo_down").on("touchstart", function () {
-//   sendCaozuo(GAME_DOWN);
-// });
-// $("#caozuo_left").on("touchstart", function () {
-//   sendCaozuo(GAME_LEFT);
-// });
-// $("#caozuo_right").on("touchstart", function () {
-//   sendCaozuo(GAME_RIGHT);
-// });
-// $("#caozuo_go").on("click", function () {
-//   sendCaozuo(GAME_GO);
-// });
-// $("#caozuo_connect").click(function () {
-//   sendCaozuo(GAME_CONNECT);
-// });
-// $("#caozuo_camera").click(function () {
-//   sendCaozuo(GAME_CAMERA);
-// });
-// $("#caozuo_down,#caozuo_up,#caozuo_left,#caozuo_right").on("touchend", function () {
-//   sendCaozuo(GAME_STOP_UP);
-// });
-// $("#sendMessage").click(function () {
-//   var mes = $("#messageContent").val();
-//   sendMessage(mes);
-//   $("#container").append("<span style='display:block'>" + mes + "</span>");
-// });
 
-let sendCaozuo = function (messageType) {
+let sendCaozuo = function (messageType, fund) {
+  if (messageType === 13) play = fund;
   socket.emit('privateSend', {
     uid: uid,
     remoteUid: remoteUid,
@@ -126,5 +98,7 @@ function GetRandomNum(Min, Max) {
   var Rand = Math.random();
   return (Min + Math.round(Rand * Range)) + "";
 }
+
+let play = null;
 
 export default sendCaozuo;
