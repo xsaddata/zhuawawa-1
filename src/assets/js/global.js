@@ -48,7 +48,8 @@ let global = function (Vue, cookie) {
     this.cookie.remove("balance");
     this.cookie.remove("username");
     this.cookie.remove("id");
-    this.$router.push('login')
+    this.$router.push('login');
+    this.$router.push('avatar');
   }
 };
 

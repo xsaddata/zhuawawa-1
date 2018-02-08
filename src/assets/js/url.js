@@ -33,8 +33,10 @@ const url = {
     convertList: "Api/SiSi/convertList",    //  积分商城 列表
     exchange: "Api/SiSi/convertApply",   //  积分兑换商品
     ex_record: 'Api/SiSi/convertLog',   //   兑换记录
+// 微信
+    wxJSSDK: "Api/SiSi/wxJSSDK",
+    pay: "Api/Wxpay/QrcodePay"
   }
-
 };
 
 export default url;

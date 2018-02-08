@@ -85,6 +85,7 @@
           this.info = d.data;
           this.cookie.set('balance', d.data.balance);
           this.cookie.set('username', d.data.user_nicename);
+          this.cookie.set('avatar', d.data.avatar);
         } else this.toast(d.descrp || "链接服务器失败");
       },
       go(page){

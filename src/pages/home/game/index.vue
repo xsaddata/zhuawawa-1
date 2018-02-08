@@ -44,7 +44,56 @@
 
   import{vNav} from "@/components"
   import Kinlink from "./kinlink";
-  import send from "./caozuo";
+//  import send from "./caozuo";
+
+  const socket = io("http://123.56.29.65:8003", {'transports': ['websocket', 'polling']}); //信令
+  socket.on('user joined', function (data) {
+    console.log(data);
+
+  });
+  socket.on('user left', function (data) {
+    console.log(data);
+
+  });
+
+  socket.on('privateReceive', function (data) {
+    console.log("=================");
+    console.log(data);
+    switch (data.messageType) {
+      case GAME_CONNECTTED:
+        break;
+    }
+
+  });
+
+  socket.on('new message', function (data) {
+    console.log(data);
+    let jsonData = JSON.parse(data);
+    console.log(jsonData)
+    switch (jsonData.messageType) {
+      case GAME_OK:
+        console.log("抓住了")
+        break;
+      case GAME_NO:
+        console.log("没抓住")
+        break;
+    }
+    // $("#container").append("<h5>" + jsonData.messageType + jsonData.messageContent + "</h5>");
+
+  });
+
+  const sendCaozuo = function (data, fund) {
+//    if (messageType === 13) play = fund;
+    socket.emit('privateSend', {
+      uid: data.uid,
+      remoteUid: "10000",
+      playerUid: data.playerUid,
+      playerUserName: data.playerUserName,
+      playerAvatar: data.playerAvatar,
+      matchID: data.matchID,
+      messageType: data.messageType
+    });
+  }
 
   export default {
     name: 'game',
@@ -57,6 +106,7 @@
         in_game: false,     //  显示 操作界面
         username: null,     //  用户昵称
         uid: null,    //  用户id
+        avatar: null,     //  头像
         deviceid: null,  //  设备id
         token: null,
         match_id: null,   //  ???
@@ -64,13 +114,19 @@
     },
     created(){
       this.loading.show();
-      this.userName = this.playerUserName;
+      this.userName = this.cookie.get('username');
       this.uid = this.playerUid;
       this.balance = this.cookie.get('balance') || 0;
       this.deviceid = this.$route.query.id;
       this.token = this.cookie.get('token');
       this.uid = this.cookie.get('id');
-      this.ajax('enterDeviceRoom', `token=${this.token}&deviceid=${this.deviceid}`, this.init)
+      this.avatar = this.cookie.get('avatar');
+      this.ajax('enterDeviceRoom', `token=${this.token}&deviceid=${this.deviceid}`, this.init);
+      socket.emit('user joined', {
+        username: this.userName,
+        uid: this.uid,
+        channel: this.deviceid
+      });
 
     },
     methods: {
@@ -83,13 +139,20 @@
         }
       },
       sendCaozuo(type){
-        let fund = {
-          "13": this.play,
+        let data = {
+          uid: this.uid,
+          remoteUid: this.deviceid,
+          playerUid: this.uid,
+          playerUserName: this.userName,
+          playerAvatar: this.avatar,
+          matchID: this.match_id,
+          messageType: type
         };
-        send(type, fund[type])
+        sendCaozuo(data)
       },
       play(){
 //          申请链接设备
+//        this.sendCaozuo(13);
         const _this = this;
         this.loading.show("连接中");
         this.ajax('connect', `token=${this.token}&deviceid=${this.deviceid}`, function (d) {

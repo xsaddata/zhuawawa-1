@@ -7,7 +7,7 @@ import router from './router'
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
 import './assets/js/rem'
-import {AjaxPlugin, cookie, LoadingPlugin, AlertPlugin, ToastPlugin} from "vux"
+import {AjaxPlugin, cookie, LoadingPlugin, AlertPlugin, ToastPlugin,WechatPlugin} from "vux"
 import global from './assets/js/global'
 
 
@@ -37,6 +37,7 @@ Vue.use(AjaxPlugin)
 Vue.use(LoadingPlugin)
 Vue.use(AlertPlugin)
 Vue.use(ToastPlugin)
+Vue.use(WechatPlugin)
 
 //  全局变量、方法
 global(Vue, cookie)
