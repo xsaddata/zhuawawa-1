@@ -6,9 +6,9 @@
       <canvas v-video style="width:100%;height:100%;"></canvas>
     </div>
     <div class="controller position">
-      <span class="room fl">{{online_num}}人在房间</span>
+      <!--<span class="room fl">{{online_num}}人在房间</span>-->
       <!--切换按钮-->
-      <span class="switch_video fr" @click="sendCaozuo(12)"></span>
+      <span class="switch_video fr" @click="sendCaozuo(12)" v-show="in_game"></span>
 
 
       <ul class="ganme_connect" v-show="!in_game">
@@ -36,6 +36,11 @@
       </div>
 
     </div>
+
+    <ul class="history">
+
+    </ul>
+
   </div>
 </template>
 
@@ -44,7 +49,7 @@
 
   import{vNav} from "@/components"
   import Kinlink from "./kinlink";
-//  import send from "./caozuo";
+  //  import send from "./caozuo";
 
   const socket = io("http://123.56.29.65:8003", {'transports': ['websocket', 'polling']}); //信令
   socket.on('user joined', function (data) {
@@ -60,7 +65,8 @@
     console.log("=================");
     console.log(data);
     switch (data.messageType) {
-      case GAME_CONNECTTED:
+      case 14:
+        play();
         break;
     }
 
@@ -71,10 +77,10 @@
     let jsonData = JSON.parse(data);
     console.log(jsonData)
     switch (jsonData.messageType) {
-      case GAME_OK:
+      case 9:
         console.log("抓住了")
         break;
-      case GAME_NO:
+      case 10:
         console.log("没抓住")
         break;
     }
@@ -83,7 +89,7 @@
   });
 
   const sendCaozuo = function (data, fund) {
-//    if (messageType === 13) play = fund;
+    if (data.messageType === 13) play = fund;
     socket.emit('privateSend', {
       uid: data.uid,
       remoteUid: "10000",
@@ -93,8 +99,21 @@
       matchID: data.matchID,
       messageType: data.messageType
     });
-  }
+  };
 
+  let sendMessage = function (message) {
+    socket.emit('new message', {
+      uid: uid,
+      remoteUid: remoteUid,
+      messageContent: message,
+      userName: userName,
+      playerAvatar: playerAvatar,
+      userAvatar: userAvatar,
+      messageType: NORMAL
+
+    });
+  }
+  let play;
   export default {
     name: 'game',
     components: {vNav},
@@ -148,7 +167,11 @@
           matchID: this.match_id,
           messageType: type
         };
-        sendCaozuo(data)
+        let fund = {
+          "13": this.apply_pay,
+        };
+        if (type === 11) this.in_game = false;
+        sendCaozuo(data, fund[type])
       },
       play(){
 //          申请链接设备
@@ -159,14 +182,21 @@
           _this.loading.hide();
           if (d.status === 1) {
             _this.match_id = d.data.match_id;
-            _this.sendCaozuo(13, function () {
-              _this.in_game = true;
+            _this.ajax('get_info', `id=${_this.uid}&token=${_this.token}`, function (d) {
+              if (d.code === 200) {
+                _this.cookie.set('balance', d.data.balance);
+                _this.balance = d.data.balance
+              }
             });
+            _this.sendCaozuo(13);
           }
           else if (d.status === 0) _this.toast(`${d.data.user_nicename}正在游戏`);
+          else if (d.status === 2) _this.toast(`${d.data.user_nicename}正在游戏1`);
           else _this.toast(d.descrp)
         });
-
+      },
+      apply_pay(){
+        this.in_game = true;
       }
     },
     directives: {

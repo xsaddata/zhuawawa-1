@@ -114,7 +114,17 @@
         }
       },
       invite(){
-        window.location.href = this.url.host + this.url.api.invite + this.cookie.get('token');
+//        window.location.href = this.url.host + this.url.api.invite + this.cookie.get('token');
+        this.$wechat.onMenuShareAppMessage({
+          title: '邀请标题', // 分享标题
+          desc: '描述', // 分享描述
+          link: window.location.origin, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+          imgUrl: '', // 分享图标
+          success: function () {
+
+          },
+
+        });
       },
       _open(page){
         this.$router.push(page);
