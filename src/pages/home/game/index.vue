@@ -13,7 +13,7 @@
 
       <ul class="ganme_connect" v-show="!in_game">
         <li class="li fl w25">
-          <span class=" btn record"></span>
+          <!--<span class=" btn record"></span>-->
         </li>
         <li class="li fl w50" @click="play">
       <span class=" btn play">
@@ -22,7 +22,7 @@
       </span>
         </li>
         <li class="li fl w25">
-          <span class=" btn chat"></span>
+          <!--<span class=" btn chat"></span>-->
         </li>
       </ul>
 

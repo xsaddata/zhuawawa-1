@@ -22,6 +22,8 @@
           </li>
         </ul>
       </div>
+
+      <span class="diamond" v-if="info.balance" @click="$router.push('recharge')">{{info.balance}}</span>
     </header>
 
     <ul class="list">
@@ -65,7 +67,8 @@
           not_token_num: '0',
           jifen: "0",   //  等接口 改
           id: "888888",
-          user_nicename: 'user_name'
+          user_nicename: 'user_name',
+          balance: "0"
         },
         token: null,
       }
@@ -83,9 +86,13 @@
         this.loading.hide();
         if (d.code === 200) {
           this.info = d.data;
+
+          this.info.balance = d.data.balance;
           this.cookie.set('balance', d.data.balance);
           this.cookie.set('username', d.data.user_nicename);
           this.cookie.set('avatar', d.data.avatar);
+          this.cookie.set("id",d.data.id);
+
         } else this.toast(d.descrp || "链接服务器失败");
       },
       go(page){

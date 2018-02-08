@@ -37,7 +37,7 @@
           v-for="(item,index) in device"
           :style="`background-image: url(${item.thumb})`"
           :key="item.deviceid"
-      @click="$router.push('game?id=' + item.deviceid)">
+          @click="$router.push('game?id=' + item.deviceid)">
 
         {{item.channel_title}}
         <span class="state fr"
@@ -66,12 +66,16 @@
       return {
         banner: null,
         device: null,
+        mycode: null
       }
     },
     created(){
       this.loading.show();
       let token = this.cookie.get('token');
+      let id = this.cookie.get('id');
       let code = this.$route.query.code;
+
+      if (id) this.mycode = id;
       if (token) this.get_banner(token);
       else if (code) {
         this.ajax('login', `code=${code}`, this.login);
@@ -110,21 +114,24 @@
           this.cookie.set("token", token);
           this.cookie.set("id", d.data.id);
           this.cookie.set("balance", d.data.balance);
+          this.cookie.set('username', d.data.user_nicename);
+          this.cookie.set('avatar', d.data.avatar);
+          this.mycode = d.data.id;
           this.get_banner(token)
         }
       },
       invite(){
-//        window.location.href = this.url.host + this.url.api.invite + this.cookie.get('token');
-        this.$wechat.onMenuShareAppMessage({
-          title: '邀请标题', // 分享标题
-          desc: '描述', // 分享描述
-          link: window.location.origin, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-          imgUrl: '', // 分享图标
-          success: function () {
 
-          },
+//        window.location.href = this.url.host + this.url.api.invite + this.cookie.get('token');
+        let mycode = this.mycode + "68320";
+        this.$wechat.onMenuShareAppMessage({
+          title: '快抓娃娃机，抓中带回家', // 分享标题
+          desc: '跟我一起玩跨抓娃娃吧，输入邀请码' + mycode, // 分享描述
+          link: window.location.origin, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+          imgUrl: './static/img/logo', // 分享图标
 
         });
+        this.alert('请点击右上角')
       },
       _open(page){
         this.$router.push(page);
