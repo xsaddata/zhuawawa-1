@@ -11,6 +11,7 @@ const url = {
 // 房间
     enterDeviceRoom: "Api/SiSi/enterDeviceRoom",    //  进入房间
     connect: "Api/SiSi/connDeviceControl",    //  申请连接设备
+    history: "Api/SiSi/getWinLogByDeviceid",   //  最近抓中记录
 // 设置
     help: "portal/appweb/help?qudao=" + QUDAO + "&token=",       //  帮助
     invite: "portal/appweb/my_code?qudao=" + QUDAO + "&token=",  //  邀请

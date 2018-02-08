@@ -3,7 +3,7 @@
     <vNav></vNav>
     <span class="diamond" @click="$router.push('recharge')">{{balance}}</span>
     <div class="video position">
-      <canvas v-video style="width:100%;height:100%;"></canvas>
+      <canvas style="width:100%;height:100%;" id="canvas"></canvas>
     </div>
     <div class="controller position">
       <!--<span class="room fl">{{online_num}}人在房间</span>-->
@@ -13,7 +13,7 @@
 
       <ul class="ganme_connect" v-show="!in_game">
         <li class="li fl w25">
-          <!--<span class=" btn record"></span>-->
+          <span class=" btn record" @click="show_history"></span>
         </li>
         <li class="li fl w50" @click="play">
       <span class=" btn play">
@@ -22,7 +22,7 @@
       </span>
         </li>
         <li class="li fl w25">
-          <!--<span class=" btn chat"></span>-->
+          <span class=" btn chat"></span>
         </li>
       </ul>
 
@@ -37,9 +37,18 @@
 
     </div>
 
-    <ul class="history">
+    <div class="his_fog" v-if="show_his" @click.stop="show_his= false">
+      <div class="history">
+        <ul class="history_list">
+          <li class="his" v-for="(item,index) in history" :key="index">
+            <img :src="item.avatar" alt="" class="avatar">
+            {{item.user_nicename}}
+            <span class="fr tiem">{{item.play_time}}</span>
+          </li>
+        </ul>
+      </div>
+    </div>
 
-    </ul>
 
   </div>
 </template>
@@ -50,7 +59,7 @@
   import{vNav} from "@/components"
   import Kinlink from "./kinlink";
   //  import send from "./caozuo";
-
+  let canvas;
   const socket = io("http://123.56.29.65:8003", {'transports': ['websocket', 'polling']}); //信令
   socket.on('user joined', function (data) {
     console.log(data);
@@ -129,6 +138,8 @@
         deviceid: null,  //  设备id
         token: null,
         match_id: null,   //  ???
+        history: null,    //  最近抓中记录
+        show_his: false,    //  显示 抓中记录
       }
     },
     created(){
@@ -140,13 +151,16 @@
       this.token = this.cookie.get('token');
       this.uid = this.cookie.get('id');
       this.avatar = this.cookie.get('avatar');
-      this.ajax('enterDeviceRoom', `token=${this.token}&deviceid=${this.deviceid}`, this.init);
       socket.emit('user joined', {
         username: this.userName,
         uid: this.uid,
         channel: this.deviceid
       });
 
+    },
+    mounted(){
+      canvas = document.getElementById('canvas');
+      this.ajax('enterDeviceRoom', `token=${this.token}&deviceid=${this.deviceid}`, this.init);
     },
     methods: {
       init(d){
@@ -155,6 +169,7 @@
         else {
           this.price = d.data.price;
           this.online_num = d.data.online_num;
+          let player = new Kinlink.Player(d.data.h5_play, {canvas: canvas});
         }
       },
       sendCaozuo(type){
@@ -197,17 +212,26 @@
       },
       apply_pay(){
         this.in_game = true;
-      }
+      },
+      show_history(){
+        if (this.history === null) {
+          this.loading.show();
+          const _this = this;
+
+
+          this.ajax("history", `deviceid=${this.deviceid}`, function (d) {
+            _this.loading.hide();
+            if (d.code !== 200) _this.toast(d.descrp);
+            else if (d.info.length > 0) {
+              _this.history = d.info;
+              _this.show_his = true;
+            } else _this.toast("暂无抓中记录");
+          });
+
+        } else this.show_his = true;
+      },
+
     },
-    directives: {
-      video: {
-        inserted: function (el) {
-          let canvas = el;
-          let url = 'ws://pili-live-rtmp.v.anwenqianbao.com:1250/xinhe/001.wsts'; //视频帧数据
-          let player = new Kinlink.Player(url, {canvas: canvas});
-        }
-      }
-    }
   }
 </script>
 
