@@ -150,6 +150,15 @@ export default new Router({
       component(resolve){
         require(['@/pages/mall/index'], resolve)
       }
+    }, {
+      path: '/choujiang',
+      name: 'choujiang',
+      meta: {
+        title: '幸运抽奖'
+      },
+      component(resolve){
+        require(['@/pages/activity/choujiang'], resolve)
+      }
     }
   ],
 })
