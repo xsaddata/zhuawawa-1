@@ -19,25 +19,30 @@ const url = {
     feedback: "portal/appweb/feedback?qudao=" + QUDAO + "&token=",   //  问题反馈
     about: "portal/appweb/about_us?qudao=" + QUDAO + "&token=",    //  关于
 // 我的
-    get_info: "Api/SiSi/getUserInfo",   //  个人信息
-    recharge: 'Api/SiSi/get_recharge',   //  充值列表 [recharge]
-    wait_baby: 'Api/SiSi/getNotTakenWawaByToken',    //  奖品兑换列表 [exchange]
-    applyPostWawa: 'Api/SiSi/getPostConvert',    //    兑换&提取  [exchange]
-    get_note: 'Api/SiSi/pushNotice',    //    消息通知  [news]
-    integral: "Api/SiSi/intergationLog",     //    积分记录
-    gold_notes: "Api/SiSi/getMoneylog",   //  金币记录
-    grad: "Api/SiSi/getPlayLogByUid",   // 抓取记录
-    add_address: "Api/SiSi/addAddress",   // 添加或修改地址 []
-    address: "Api/SiSi/getAddress",   // 获取地址
-    del_address: "Api/SiSi/delAddress",   // 获取地址
+    get_info: "Api/SiSi/getUserInfo",                 // 个人信息
+    recharge: 'Api/SiSi/get_recharge',                // 充值列表 [recharge]
+    wait_baby: 'Api/SiSi/getNotTakenWawaByToken',     // 奖品兑换列表 [exchange]
+    applyPostWawa: 'Api/SiSi/getPostConvert',         // 兑换&提取  [exchange]
+    get_note: 'Api/SiSi/pushNotice',                  // 消息通知  [news]
+    integral: "Api/SiSi/intergationLog",              // 积分记录
+    gold_notes: "Api/SiSi/getMoneylog",               // 金币记录
+    grad: "Api/SiSi/getPlayLogByUid",                 // 抓取记录
+    add_address: "Api/SiSi/addAddress",               // 添加或修改地址 []
+    address: "Api/SiSi/getAddress",                   // 获取地址
+    del_address: "Api/SiSi/delAddress",               // 获取地址
 // 积分商城
-    convertList: "Api/SiSi/convertList",    //  积分商城 列表
-    exchange: "Api/SiSi/convertApply",   //  积分兑换商品
-    ex_record: 'Api/SiSi/convertLog',   //   兑换记录
+    convertList: "Api/SiSi/convertList",              //  积分商城 列表
+    exchange: "Api/SiSi/convertApply",                //  积分兑换商品
+    ex_record: 'Api/SiSi/convertLog',                 //  兑换记录
 // 微信
     wxJSSDK: "Api/SiSi/wxJSSDK",
-    pay: "Api/Wxpay/QrcodePay"
-  }
+    pay: "Api/Wxpay/QrcodePay",
+// 活动
+    getPrize: 'Api/SiSi/getPrize',                    //  获取抽奖信息
+    startPrize: "Api/SiSi/startPrize",                //  抽奖结果
+    share: 'Portal/appweb/my_code_share',             //  分享
+    myPrize: "Api/SiSi/winnerLog",                    //  中奖记录
+  },
 };
 
 export default url;

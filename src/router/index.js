@@ -157,7 +157,7 @@ export default new Router({
         title: '幸运抽奖'
       },
       component(resolve){
-        require(['@/pages/activity/choujiang'], resolve)
+        require(['@/pages/activity/choujiang/index.vue'], resolve)
       }
     }
   ],

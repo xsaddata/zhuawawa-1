@@ -36,7 +36,6 @@
     },
     methods: {
       loadMore: function () {
-          debugger;
           if(this.busy === false){
             this.busy = true;
 

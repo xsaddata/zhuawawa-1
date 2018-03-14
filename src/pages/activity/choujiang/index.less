@@ -1,18 +1,146 @@
-.wheel {
+.choujiang {
+  height: 29rem;
+  padding-top: 6rem;
+  background: #ffefca url(./img/bg.png) no-repeat left top / 100%;
   position: relative;
-  background: url(./wheel-bg.png) no-repeat left top / 100% 100%;
-  .item {
-    width: 100%;
-  }
-  .pointer {
+  .overplus {
     position: absolute;
-    width: 31.5%;
-    height: 42.5%;
-    left: 34.6%;
-    top: 23%;
+    top: 5.31rem;
+    right: .8rem;
+    color: #c20e15;
+    font-size: .45rem;
+    font-weight: bold;
+  }
+  .wheel {
+    position: relative;
+    margin: 0 .5rem;
+    background: url(./img/wheel-bg.png) no-repeat left top / 100% 99%;
+    .item {
+      width: 100%;
+    }
+    .pointer {
+      position: absolute;
+      width: 35.5%;
+      height: 42.5%;
+      left: 32.6%;
+      top: 23%;
+    }
+  }
+  .btns {
+    @h: 4.92rem;
+    @paddint-top: 3.6rem;
+    position: absolute;
+    top: 13.4rem;
+    left: 0;
+    right: 0;
+    height: @h;
+    padding-top: @paddint-top;
+    background: url(./img/btns.png) no-repeat left top / 100% 100%;
+    .btn {
+      width: 50%;
+      height: @h - @paddint-top;
+    }
+  }
+  .my_prize {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, .4);
+    max-width: 10rem;
+    margin: 0 auto;
+    padding-top: 50vh;
+    z-index: 100;
+    .my_prize_box {
+      @h: 12rem;
+      width: 8rem;
+      height: @h;
+      margin: -@h / 2 auto 0;
+      padding: .5rem;
+      background: #fdf2f3;
+      border: .25rem solid #ff86b4;
+      border-radius: .5rem;
+      font-size: .4rem;
+      z-index: 151;
+      position: relative;
+    }
+    .clear_box {
+      @w: 1rem;
+      position: absolute;
+      top: -@w / 2;
+      right: -@w / 2;
+      width: @w;
+      height: @w;
+      background: white url(./img/clear_box.png) no-repeat left top / 100% 100%;
+      border-radius: 50%;
+      box-shadow: 0 0 .3rem #222;
+      z-index: 151;
+    }
+    .my_prize_title {
+      display: block;
+      margin: 0 auto .2rem;
+      height: .6rem;
+    }
+    .info {
+      height: 9.5rem;
+      color: #ff4e91;
+      font-size: .45rem;
+      overflow-x: hidden;
+      overflow-y: scroll;
+      .log {
+        @h: 1.5rem;
+        height: @h;
+        line-height: @h;
+        border-bottom: 1px solid #ffbfc2;
+        .fr{
+          font-size: .3rem;
+        }
+      }
+      .log_img {
+        width: .8rem;
+        height: .8rem;
+        max-height: 1.5rem;
+        vertical-align: middle;
+        margin-top: -3px;
+        margin-right: .2rem;
+      }
+    }
+    .no_log {
+      text-align: center;
+      color: #ff4e91;
+    }
+  }
+  .explain {
+    position: absolute;
+    top: 19.5rem;
+    left: .46rem;
+    right: .46rem;
+    line-height: .5rem;
+    border: 2px solid #ffc599;
+    border-radius: .2rem;
+    color: white;
+    font-size: .39rem;
+    .explain_title {
+      display: block;
+      @h: .8rem;
+      height: @h;
+      margin: -@h / 2 auto 0;
+    }
+    .text {
+      margin: 0 .3rem .3rem;
+    }
+    .em2 {
+      text-indent: 2em;
+    }
+  }
+  .copyright {
+    position: absolute;
+    bottom: .8rem;
+    left: 0;
+    right: 0;
+    font-size: .38rem;
+    text-align: center;
+    color: #f58e81;
   }
 }
-
-
-
-

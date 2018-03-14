@@ -15,7 +15,7 @@ import infiniteScroll from 'vue-infinite-scroll'
 router.beforeEach((to, from, next) => {
   NProgress.start();
   let token = cookie.get('token');
-  let noToken = ["login", "404", "home"].includes(to.name);
+  let noToken = ["login", "404", "home","choujiang"].includes(to.name);
   if (token) next();
   else if (noToken) next();
   else next("/login");
