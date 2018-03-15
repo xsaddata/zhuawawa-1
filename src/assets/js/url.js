@@ -1,6 +1,6 @@
 const QUDAO = 'kuailai-one';
 const url = {
-  host: "http://test.doll.anwenqianbao.com/",
+  host: "http://doll.anwenqianbao.com/",
   api: {
 // 登录
     protocol: "portal/page/index/id/2?qudao=" + QUDAO + "&token=",    //  协议
